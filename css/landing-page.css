@@ -1,3 +1,9 @@
+/*!
+ * Start Bootstrap - Landing Page v5.0.7 (https://startbootstrap.com/template-overviews/landing-page)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/LICENSE)
+ */
+
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -13,21 +19,21 @@ h6 {
 }
 
 header.masthead {
-  position: relative;
-  background: url('../img/blue-and-red-plants-2505693.jpg') no-repeat center center;
+  height: 100vh;
+  min-height: 500px;
+  background: url('../img/home-page-background-2.jpg');
   background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 header.masthead .overlay {
   position: absolute;
-  background-color: rgb(0, 0, 0);
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 header.masthead h1 {
@@ -113,34 +119,43 @@ header.masthead h1 {
   opacity: 0.3;
 }
 
-.signin {
- 
-  background:#0c3b64c7;
-  color: white;
-  font-weight:0;
-  border: 1px solid;
- border-color: aliceblue;
- border-radius: 5px;
- transition: all 0.3s ease-out;
-  box-shadow: 0px 0px 3px 0.3px #1761a0;
-  padding-top: 10px;
-  padding-bottom: 10px;
+footer.footer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
 
-  padding-left: 30px;
-  padding-right: 30px;
+.signin button{
+  position: center;
+ 
+  background:#1761a0;
+
+color: white;
+padding: 12px 60px;
+text-align: center;
+font-size: 16px;
+margin: 4px 2px;
+margin-top: 30px;
+
+  font-weight:0;
+   border: 1.5px solid;
+  border-color: aliceblue;
+  border-radius: 99px;
+  transition: all 0.3s ease-out;
+  box-shadow: 0px 0px 3px 0.3px #1761a0;
   
 }
-.signin:hover,
-.signin:focus,
-.signin:active{
+.signin button:hover,
+.signin button:focus,
+.signin button:active{
   background:#0c3457;
   color:white;
   transition: all 0.3s ease-in;
   box-shadow: 0px 0px 9px 1px #0e3c64da;
 }
 
-
-footer.footer {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+.bottom {
+  position: relative;
+  display: block;
+  margin: 33px;
+  padding: 3px;
 }
