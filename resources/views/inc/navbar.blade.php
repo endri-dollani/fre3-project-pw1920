@@ -81,11 +81,11 @@
                                 <ul id="navigation">
                                     <li><a href="/">Home</a></li>
                                     <li><a href="/about">About</a></li>
-                                    <li><a href="/services">Service</a></li>
+                                    <li><a href="/services">Business</a></li>
                                     <li><a href="/blog">Blog</a>
                                         <!-- <ul class="submenu"> -->
                                         <!-- <li><a href="blog.html">Blog</a></li> -->
-                                        <!-- <li><a href="single-blog.html">Blog Details</a></li> -->
+                                        {{-- <li><a href="/single-blog">Blog Details</a></li> --}}
                                         <!-- </ul> -->
                                     </li>
                                     <!-- <li><a href="#">Pages</a> -->
@@ -128,6 +128,7 @@
                                 <li><a href="#"> {{ Auth::user()->name }} <span class="caret"></span></a>
                                     <ul class="submenu">
                                         <li><a href="/dashboard">Dashboard</a></li>
+                                        <li><a href="#">Upgrade to business</a></li>
                                         <li>
                                             <a href="single-blog.html" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

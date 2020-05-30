@@ -32,6 +32,10 @@ class PagesController extends Controller
         
         return view('pages.blog');  
     }
+    public function singleblog(){
+        
+        return view('pages.single-blog');  
+    }
 
     public function contact(){
         

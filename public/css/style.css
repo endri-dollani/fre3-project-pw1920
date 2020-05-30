@@ -2450,7 +2450,8 @@ label {
       content: "";
       top: 0;
       bottom: 0;
-      background-image: url(../img/dining/dining-img.png);
+      /* background-image: url(../img/dining/dining-img.png); */
+      background-image: url('{{asset(\'img/dining/grow.jpg\')}}');
       width: 50%;
       border-radius: 0 5px 0 0;
       background-size: cover;
@@ -2466,7 +2467,9 @@ label {
       content: "";
       top: 0;
       bottom: 0;
-      background-image: url(../img/dining/dining-img2.png);
+      /* background-image: url(../img/dining/dining-img2.png); */
+      background-image: url('{{asset(\'img/dining/grow.jpg\')}}');
+
       width: 50%;
       border-radius: 0 0 0 5px;
       background-repeat: no-repeat;

@@ -17,13 +17,13 @@
     <!-- slider Area Start-->
     <div class="slider-area">
         <div class="single-slider hero-overly slider-height2 d-flex align-items-center"
-            data-background="{{asset('img/hero/servicespage_hero.jpg')}}">
+            data-background="{{asset('img/hero/bussines_cover.jpg')}}">
             <div class="container">
                 <div class="row ">
                     <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
                         <div class="hero-caption">
-                            <span>Services</span>
-                            <h2>Services</h2>
+                            <span>Business</span>
+                            <h2>Find out why this is the right website for your business.</h2>
                         </div>
                     </div>
                 </div>
@@ -40,12 +40,11 @@
                 <div class="row justify-content-end">
                     <div class="col-lg-8 col-md-8">
                         <div class="dining-caption">
-                            <span>Our resturent</span>
-                            <h3>Dining & Drinks</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br> tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud.
+                            <span>Grow as a bussines</span>
+                            <h3>Create offers and make your customers happy!</h3>
+                            <p>By using our website you can promote your tourism business by <br> 
+                                creating reservation tables for customers. <br> 
                             </p>
-                            <a href="#" class="btn border-btn">Learn More <i class="ti-angle-right"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -57,12 +56,13 @@
                 <div class="row justify-content-start">
                     <div class="col-lg-8 col-md-8">
                         <div class="dining-caption text-right">
-                            <span>Our Pool</span>
-                            <h3>Swimming Pool</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br> tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud.
+                            <span>Our Services</span>
+                            <h3>What we offer.</h3>
+                            <p>
+                                By using this website you have acces to <br> post and create reservation tables, for your customers. <br>
+                                Transactions are made online and are secure. <br>
                             </p>
-                            <a href="#" class="btn border-btn">Learn More <i class="ti-angle-right"></i></a>
+                          
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
     </div>
     <!-- Dining End -->
 
-    <!-- Testimonial Start -->
+    {{-- <!-- Testimonial Start -->
     <div class="testimonial-area t-padding">
         <div class="container">
             <div class="row justify-content-center">
@@ -158,90 +158,93 @@
             </div>
         </div>
     </div>
-    <!-- Gallery img End-->
+    <!-- Gallery img End--> --}}
+    <br> <br> <br> <br> <br>
 </main>
 <footer>
-   <!-- Footer Start-->
-   <div class="footer-area black-bg footer-padding">
-       <div class="container">
-           <div class="row d-flex justify-content-between">
-               <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                  <div class="single-footer-caption mb-30">
-                     <!-- logo -->
-                     <div class="footer-logo">
-                       <a href="index.html"><img src="{{asset('img/logo/logo2_footer.svg')}}" alt=""></a>
-                     </div>
-                     <div class="footer-social footer-social2">
-                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                         <a href="#"><i class="fab fa-twitter"></i></a>
-                         <a href="#"><i class="fas fa-globe"></i></a>
-                         <a href="#"><i class="fab fa-behance"></i></a>
-                     </div>
-                     <div class="footer-pera">
-                          <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="#">FRE3</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
-                   <div class="single-footer-caption mb-30">
-                       <div class="footer-tittle">
-                           <h4>Quick Links</h4>
-                           <ul>
-                               <li><a href="#">About Tourist Checkpoint</a></li>
-                               {{-- <li><a href="#">Our Best Rooms</a></li>
-                               <li><a href="#">Our Photo Gellary</a></li>
-                               <li><a href="#">Pool Service</a></li> --}}
-                           </ul>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area black-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                       <div class="single-footer-caption mb-30">
+                          <!-- logo -->
+                          <div class="footer-logo">
+                            <a href="/"><img src="{{asset('img/logo/logo2_footer.svg')}}" alt=""></a>
+                          </div>
+                          <div class="footer-social footer-social2">
+                              <a href="#"><i class="fab fa-facebook-f"></i></a>
+                              <a href="#"><i class="fab fa-twitter"></i></a>
+                              <a href="#"><i class="fas fa-globe"></i></a>
+                              <a href="#"><i class="fab fa-behance"></i></a>
+                          </div>
+                          <div class="footer-pera">
+                               <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="#">FRE3</a>
+     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                          </div>
                        </div>
-                   </div>
-               </div>
-               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                   <div class="single-footer-caption mb-30">
-                       <div class="footer-tittle">
-                           <h4>Reservations</h4>
-                           <ul>
-                               <li><a href="#">Tel: 04 255 6987</a></li>
-                               <li><a href="#">Skype: TouristCheckpointbooking</a></li>
-                               <li><a href="#">reservations@touristcheckpoint.com</a></li>
-                           </ul>
-                       </div>
-                   </div>
-               </div>
-               <div class="col-xl-3 col-lg-3 col-md-4  col-sm-5">
-                   <div class="single-footer-caption mb-30">
-                       <div class="footer-tittle">
-                           <h4>Our Location</h4>
-                           <ul>
-                               <li><a href="http://www.fshn.edu.al/">Faculty of Natural Sciences,</a></li>
-                               <li><a href="http://www.fshn.edu.al/">Bulevardi Zogu I, Tiranë</a></li>
-                           </ul>
-                           {{-- <!-- Form -->
-                            <div class="footer-form" >
-                                <span style="color: white;">Newsletter</span>
-                                <div id="mc_embed_signup">
-                                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                    method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                        class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = ' Email Address '">
-                                        <div class="form-icon">
-                                          <button type="submit" name="submit" id="newsletter-submit"
-                                          class="email_icon newsletter-submit button-contactForm"><img src="{{asset('img/logo/form-iocn.jpg')}}" alt=""></button>
-                                        </div>
-                                        <div class="mt-10 info"></div>
-                                    </form>
-                                </div>
-                            </div> --}}
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
-   <!-- Footer End-->
-</footer>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
+                        <div class="single-footer-caption mb-30">
+                            <div class="footer-tittle">
+                                <h4>Quick Links</h4>
+                                <ul>
+                                    <li><a href="#">About Tourist Checkpoint</a></li>
+                                    {{-- <li><a href="#">Our Best Rooms</a></li>
+                                    <li><a href="#">Our Photo Gellary</a></li>
+                                    <li><a href="#">Pool Service</a></li> --}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                        <div class="single-footer-caption mb-30">
+                            <div class="footer-tittle">
+                                 <h4>Contact</h4>
+                                 <ul>
+                                     <li><a href="#">Tel: 04 255 6987</a></li>
+                                     <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                     <li><a href="#">contact@touristcheckpoint.com</a></li>
+                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4  col-sm-5">
+                        <div class="single-footer-caption mb-30">
+                            <div class="footer-tittle">
+                                <h4>Our Location</h4>
+                                <ul>
+                                    <li><a href="http://www.fshn.edu.al/">Faculty of Natural Sciences,</a></li>
+                                    <li><a href="http://www.fshn.edu.al/">Bulevardi Zogu I, Tiranë</a></li>
+                                </ul>
+                                {{-- <!-- Form -->
+                                 <div class="footer-form" >
+                                     <span style="color: white;">Newsletter</span>
+                                     <div id="mc_embed_signup">
+                                         <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                         method="get" class="subscribe_form relative mail_part">
+                                             <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                             class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                             onblur="this.placeholder = ' Email Address '">
+                                             <div class="form-icon">
+                                               <button type="submit" name="submit" id="newsletter-submit"
+                                               class="email_icon newsletter-submit button-contactForm"><img src="{{asset('img/logo/form-iocn.jpg')}}" alt=""></button>
+                                             </div>
+                                             <div class="mt-10 info"></div>
+                                         </form>
+                                     </div>
+                                 </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+     </footer>
+     
 
 
 

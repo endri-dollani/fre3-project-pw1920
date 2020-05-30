@@ -9,14 +9,14 @@
     <!-- slider Area Start-->
     <div class="slider-area">
         <div class="single-slider hero-overly slider-height2 d-flex align-items-center"
-            data-background="{{asset('img/hero/aboutpage_hero.jpg')}}">
+            data-background="{{asset('img/hero/bussines_cover.jpg')}}">
             
             <div class="container">
                 <div class="row ">
                     <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
                         <div class="hero-caption">
                             <span>About</span>
-                            <h2>About</h2>
+                            <h2>About our company</h2>
                         </div>
                     </div>
                 </div>
@@ -34,20 +34,23 @@
                         <img src="{{asset('img/customer/customar1.png')}}" class="customar-img1" alt="">
                         <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
                         <div class="service-experience heartbeat">
-                            <h3>25 Years of Service<br>Experience</h3>
+                            <h3>68 Years of Service<br>Experience</h3>
                         </div>
                     </div>
                 </div>
                 <div class=" col-xl-4 col-lg-4">
                     <div class="customer-caption">
                         <span>About our company</span>
-                        <h2>Make the customer the hero of your story</h2>
+                        <h2>Customer is the hero of our story</h2>
                         <div class="caption-details">
-                            <p class="pera-dtails">Lorem ipsum dolor sit amet, consectetur adipisic- ing elit, sed do
-                                eiusmod tempor inc. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. </p>
-                            <a href="#" class="btn more-btn1">Learn More <i class="ti-angle-right"></i> </a>
+                            <p class="pera-dtails">Our goal is to create an platform that will help tourists from 
+                                all around the world to find their dream vacation destination.  </p>
+                            <p> By using our website you can : <br>
+                               * Find the most beautiful spots. <br>
+                               * Reservate online in a secure way. <br>
+                               * Marketing boost for bussines. <br>
+                               * Helpful reviews.</p>
+                          
                         </div>
                     </div>
                 </div>
@@ -56,7 +59,7 @@
     </section>
     <!-- Make customer End-->
 
-
+{{-- 
     <!-- Gallery img Start-->
     <div class="gallery-area g-padding fix">
         <div class="container-fluid p-0">
@@ -116,7 +119,7 @@
             </div>
         </div>
     </div>
-    <!-- Dining End -->
+    <!-- Dining End --> --}}
 
     <!-- Testimonial Start -->
     <div class="testimonial-area t-padding">
@@ -129,16 +132,16 @@
                             <!-- Testimonial tittle -->
                             <div class="font-back-tittle mb-105">
                                 <div class="archivment-front">
-                                    <img src="{{asset('img/logo/testimonial.png')}}" alt="">
+                                    <img src="{{asset('img/team/Endri.jpg')}}" style="width:100px; height: 100px; border-radius: 50%;" alt="">
                                 </div>
-                                <h3 class="archivment-back">Testimonial</h3>
+                                <h3 class="archivment-back">Developers</h3>
                             </div>
                             <!-- Testimonial Content -->
                             <div class="testimonial-caption text-center">
-                                <p>Yorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                {{-- <p>Yoripsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                     exercitation ullamco laboris nisi.
-                                </p>
+                                </p> --}}
                                 <!-- Rattion -->
                                 <div class="testimonial-ratting">
                                     <i class="fas fa-star"></i>
@@ -148,7 +151,7 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <div class="rattiong-caption">
-                                    <span>Clifford Frazier, <span>Regular Client</span> </span>
+                                    <span>Endri Dollani, <span>Frontend & Backend Developer</span> </span>
                                 </div>
                             </div>
                         </div>
@@ -157,16 +160,16 @@
                             <!-- Testimonial tittle -->
                             <div class="font-back-tittle mb-105">
                                 <div class="archivment-front">
-                                    <img src="{{asset('img/logo/testimonial.png')}}" alt="">
+                                    <img src="{{asset('img/team/Dea.png')}}" style="width:100px; height: 100px; border-radius: 50%;" alt="">
                                 </div>
-                                <h3 class="archivment-back">Testimonial</h3>
+                                <h3 class="archivment-back">Developers</h3>
                             </div>
                             <!-- Testimonial Content -->
                             <div class="testimonial-caption text-center">
-                                <p>Yorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                {{-- <p>Yorem im dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                     exercitation ullamco laboris nisi.
-                                </p>
+                                </p> --}}
                                 <!-- Rattion -->
                                 <div class="testimonial-ratting">
                                     <i class="fas fa-star"></i>
@@ -176,7 +179,35 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <div class="rattiong-caption">
-                                    <span>Clifford Frazier, <span>Regular Client</span> </span>
+                                    <span>Dea Tahirllari, <span>Frontend Developer</span> </span>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Single Testimonial -->
+                         <div class="single-testimonial  pt-65">
+                            <!-- Testimonial tittle -->
+                            <div class="font-back-tittle mb-105">
+                                <div class="archivment-front">
+                                    <img src="{{asset('img/team/Eniani.png')}}" style="width:100px; height: 100px; border-radius: 50%;" alt="">
+                                </div>
+                                <h3 class="archivment-back">Developers</h3>
+                            </div>
+                            <!-- Testimonial Content -->
+                            <div class="testimonial-caption text-center">
+                                {{-- <p>Yit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi.
+                                </p> --}}
+                                <!-- Rattion -->
+                                <div class="testimonial-ratting">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="rattiong-caption">
+                                    <span>Enian Mehmetaj, <span>Frontend Developer</span> </span>
                                 </div>
                             </div>
                         </div>
@@ -186,6 +217,8 @@
         </div>
     </div>
     <!-- Testimonial End -->
+
+    
 
 </main>
 
@@ -198,7 +231,7 @@
                   <div class="single-footer-caption mb-30">
                      <!-- logo -->
                      <div class="footer-logo">
-                       <a href="index.html"><img src="{{asset('img/logo/logo2_footer.svg')}}" alt=""></a>
+                       <a href="/"><img src="{{asset('img/logo/logo2_footer.svg')}}" alt=""></a>
                      </div>
                      <div class="footer-social footer-social2">
                          <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -229,12 +262,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                    <div class="single-footer-caption mb-30">
                        <div class="footer-tittle">
-                           <h4>Reservations</h4>
-                           <ul>
-                               <li><a href="#">Tel: 04 255 6987</a></li>
-                               <li><a href="#">Skype: TouristCheckpointbooking</a></li>
-                               <li><a href="#">reservations@touristcheckpoint.com</a></li>
-                           </ul>
+                            <h4>Contact</h4>
+                            <ul>
+                                <li><a href="#">Tel: 04 255 6987</a></li>
+                                <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                <li><a href="#">contact@touristcheckpoint.com</a></li>
+                            </ul>
                        </div>
                    </div>
                </div>
