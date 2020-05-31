@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container pb-50">
+<div class="blog-author pb-4 pt-4">
+    <div class="media align-items-center">
+<p>{{$user}}</p>
+     
+    </div>
+</div>
+{{-- <div class="container pb-50">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="blog-author pb-4 pt-4">
@@ -12,53 +18,20 @@
                     </div>
                     @endif
                     @if ($user->profile_pic == null)
-                    <img src="/storage/profile_pics/noprofilepic.jpg"
-                        style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                         <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">  
                     @else
-                    <img src="/storage/profile_pics/{{$user->profile_pic}}"
-                        style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                         <img src="/storage/profile_pics/{{$user->profile_pic}}" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
                     @endif
-
-
+                    
+                   
                     <div class="media-body">
 
-                        <h4 class="pl-4">{{$user->name}}
-
-                            @if ($user->is_business == 1)
-                            <small class="ml-2" style="color:#30b330;"><i class="fas fa-check-circle"></i></small>
-                            @endif
-
-
-                        </h4>
+                        <h4 class="pl-4">{{$user->name}} <small>| Normal User</small></h4>
 
                         <p class="pl-4">{{$user->user_bio}}</p>
                     </div>
-
-
+                 
                 </div>
-                @if ($user->is_business == 1)
-                
-                <div class="blog-author pb-4 pt-4"">
-                    <h2 class="contact-title" style="font-size: 16px;">Business Details</h2>
-                    
-                    <div class=" media align-items-center">
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Business Name</th>
-                                <th>Address</th>
-                                <th>City</th>
-                                <th>Phone Number</th>
-                            </tr>
-                            <tr>
-                                <td>{{$user->business_name}}</td>
-                                <td>{{$user->business_address}}</td>
-                                <td>{{$user->business_city}}</td>
-                                <td>{{$user->business_number}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                @endif
             </div>
             <div class="card ">
                 <div class="card-header">Dashboard </div>
@@ -67,21 +40,18 @@
 
 
                     <a href="/posts/create" class="genric-btn info mr-3">Create Post</a>
-                    <a href="/profile/{{$user->id}}/edit" class="genric-btn info mr-3">Edit Profile Info</a>
-                    @if ($user->is_business == 1)
-                        <a href="/business/{{$user->id}}/edit" class="genric-btn danger">Edit Business Info</a>
-                    @endif
-                    <h3 class="pt-4">Your Blog Posts:</h3>
+                    <a href="/profile/{{$user->id}}/edit" class="genric-btn info">Edit Profile Info</a>
+                    <h3 class="pt-4">Your Blog Posts:</h3> --}}
                     {{-- @if (count($user->posts) > 0)
-                            <table class="table table-striped">
+                        <table class="table table-striped">
+                        <tr>
+                            <th>Title</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        @foreach ($user->posts as $post)
                             <tr>
-                                <th>Title</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            @foreach ($user->posts as $post)
-                                <tr>
-                                    <td>{{$post->title}}</td>
+                                <td>{{$post->title}}</td>
                     <td><a href="/posts/{{$post->id}}/edit" class="genric-btn info">Edit</a></td>
                     <td>
                         {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class'
@@ -96,62 +66,60 @@
                     @else
                     <p>You have no posts.</p>
                     @endif --}}
+                    
+                        {{-- <div class="container">
+                            <div class="row">
+                                
+                                    
+                                       
+                                        @if (count($user->posts) > 0)
+                                        @foreach ($user->posts as $post)
+                                        <div class="container pt-5  pl-10">
+                                            <div class="blog_item_img">
+                                                <img src="/storage/cover_images/{{$post->cover_image}}" class="" style="width: 90%; height: 400px;" alt="">
+                                                {{-- <a href="#" class="blog_item_date">
+                                                    <h3>Reservate</h3>
+                                                </a> --}}
+                                            {{-- </div>
+                
+                                            <div class="blog_details">
+                                                <a href="/posts/{{$post->id}}">
+                                                    <h2>{{$post->title}}</h2>
+                                                </a>
+                                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                                <ul class="blog-info-link">
+                                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                                    <li><small>Written on {{$post->created_at}} by {{$post->user->name}}</small></li>
+                                                </ul>
+                                            </div>
+                                            <a href="/posts/{{$post->id}}/edit" class="genric-btn info mt-3">Edit</a>
+                                            {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class'
+                                             => 'float-right'])!!}
+                                             {{Form::hidden('_method', 'DELETE')}}
+                                             {{Form::submit('Delete', ['class' => 'genric-btn danger  mt-3'])}}
+                                             {!!Form::close()!!}
+                                       </div>
 
-                    <div class="container">
-                        <div class="row">
-
-
-
-                            @if (count($user->posts) > 0)
-                            @foreach ($user->posts as $post)
-                            <div class="container pt-5  pl-10">
-                                <div class="blog_item_img">
-                                    <img src="/storage/cover_images/{{$post->cover_image}}" class=""
-                                        style="width: 90%; height: 400px;" alt="">
-                                    {{-- <a href="#" class="blog_item_date">
-                                                        <h3>Reservate</h3>
-                                                    </a> --}}
-                                </div>
-
-                                <div class="blog_details">
-                                    <a href="/posts/{{$post->id}}">
-                                        <h2>{{$post->title}}</h2>
-                                    </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
-                                    <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                        <li><small>Written on {{$post->created_at}} by {{$post->user->name}}</small></li>
-                                    </ul>
-                                </div>
-                                <a href="/posts/{{$post->id}}/edit" class="genric-btn info mt-3">Edit</a>
-                                {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST',
-                                'class'
-                                => 'float-right'])!!}
-                                {{Form::hidden('_method', 'DELETE')}}
-                                {{Form::submit('Delete', ['class' => 'genric-btn danger  mt-3'])}}
-                                {!!Form::close()!!}
+                                      
+                                        @endforeach
+                                        @else
+                                        <p>You have no posts.</p>
+                                        @endif
+                              
                             </div>
-
-
-                            @endforeach
-                            @else
-                            <p>You have no posts.</p>
-                            @endif
-
                         </div>
-                    </div>
-
+                  
                 </div>
             </div>
+        </div>
+       
+  
+       
+        
     </div>
-
-
-
-
-</div>
-</div>
+</div>  --}}
 <footer>
     <!-- Footer Start-->
     <div class="footer-area black-bg footer-padding">
@@ -185,7 +153,7 @@
                             <h4>Quick Links</h4>
                             <ul>
                                 <li><a href="#">About Tourist Checkpoint</a></li>
-
+                             
                             </ul>
                         </div>
                     </div>
@@ -210,12 +178,12 @@
                                 <li><a href="http://www.fshn.edu.al/">Faculty of Natural Sciences,</a></li>
                                 <li><a href="http://www.fshn.edu.al/">Bulevardi Zogu I, Tiranë</a></li>
                             </ul>
-
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
     <!-- Footer End-->
 </footer>

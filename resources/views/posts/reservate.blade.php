@@ -2,50 +2,39 @@
 
 @section('content')
 
-<script src="https://js.stripe.com/v3/"></script>
-
 <section class="contact-section">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h4 class="contact-title pb-4">Business Account Details</h4>
+                <h4 class="contact-title pb-4">Reservation Details</h4>
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form " action="{{route('checkout-business.store',)}}" method="POST" id="payment-form">
+                <form class="form-contact contact_form " action="{{route('post.reservated')}}" method="POST" id="payment-form">
                     {{csrf_field()}}
                     <div class="row">
                         <div class="col-12">
-                            <h4>Business Name</h4>
+                            <h4>Name</h4>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <input class="form-control" name="business-name" id="business-name" type="text"
                                     onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Enter your business name'"
-                                    placeholder="Enter your business name" required>
+                                    onblur="this.placeholder = 'Enter your name'"
+                                    placeholder="Enter your name" required>
                             </div>
                         </div>
 
                         <div class="col-12">
-                            <h4>Address</h4>
+                            <h4>Email</h4>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <input class="form-control" name="address" id="address" type="text"
+                                <input class="form-control" name="email" id="address" type="text"
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter address'"
                                     placeholder="Enter address" required>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="col-12">
-                                <h4>City</h4>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control valid" name="city" id="city" type="text"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter city name'"
-                                    placeholder="Enter city name" required>
-                            </div>
-                        </div>
+                        
                         {{-- <div class="col-sm-6">
                             <div class="col-12">
                                 <h4>Province</h4>
@@ -66,20 +55,7 @@
                                     placeholder="Enter postal code">
                             </div>
                         </div> --}}
-                        <div class="col-sm-6">
-                            <div class="col-12">
-                                <h4>Phone</h4>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control valid"
-                                     name="phone-number" id="phone-number" 
-                                     type="text"
-                                     placeholder="Enter phone number" 
-                                     minlength="5"
-                                     maxlength="15" 
-                                     required>
-                            </div>
-                        </div>
+                     
 
                     </div>
 
@@ -132,7 +108,7 @@
                 <!-- Single Room -->
                 <div class="single-room mb-50">
                     <div class="room-caption">
-                        <h3>Subscription price</h3>
+                        <h3>Reservation price</h3>
                         <div class="per-night">
                             <span><u>$</u>199.99 <span>/ per mounth</span></span>
                         </div>
@@ -261,83 +237,88 @@
 <script type="text/javascript" src="{{asset('js/jquery.nice-select.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.sticky.js')}}"></script>
 
+<!-- contact js -->
+<script type="text/javascript" src="{{asset('js/contact.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.form.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.validate.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/mail-script.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
+
 <!-- Jquery Plugins, main Jquery -->
 <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 
-<script src="https://js.stripe.com/v3/"></script>
-
 <script>
-            // Create a Stripe client.
-        var stripe = Stripe('{{config('services.stripe.key')}}');
+    // Create a Stripe client.
+var stripe = Stripe('{{config('services.stripe.key')}}');
 
-        // Create an instance of Elements.
-        var elements = stripe.elements();
+// Create an instance of Elements.
+var elements = stripe.elements();
 
-        // Custom styling can be passed to options when creating an Element.
-        // (Note that this demo uses a wider set of styles than the guide below.)
-        var style = {
-        base: {
-            color: '#32325d',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-            color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-        };
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+base: {
+    color: '#32325d',
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': {
+    color: '#aab7c4'
+    }
+},
+invalid: {
+    color: '#fa755a',
+    iconColor: '#fa755a'
+}
+};
 
-        // Create an instance of the card Element.
-        var card = elements.create('card', {style: style});
+// Create an instance of the card Element.
+var card = elements.create('card', {style: style});
 
-        // Add an instance of the card Element into the `card-element` <div>.
-        card.mount('#card-element');
+// Add an instance of the card Element into the `card-element` <div>.
+card.mount('#card-element');
 
-        // Handle real-time validation errors from the card Element.
-        card.on('change', function(event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-        });
+// Handle real-time validation errors from the card Element.
+card.on('change', function(event) {
+var displayError = document.getElementById('card-errors');
+if (event.error) {
+    displayError.textContent = event.error.message;
+} else {
+    displayError.textContent = '';
+}
+});
 
-        // Handle form submission.
-        var form = document.getElementById('payment-form');
-        form.addEventListener('submit', function(event) {
-        event.preventDefault();
+// Handle form submission.
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+event.preventDefault();
 
-        stripe.createToken(card).then(function(result) {
-            if (result.error) {
-            // Inform the user if there was an error.
-            var errorElement = document.getElementById('card-errors');
-            errorElement.textContent = result.error.message;
-            } else {
-            // Send the token to your server.
-            stripeTokenHandler(result.token);
-            }
-        });
-        });
+stripe.createToken(card).then(function(result) {
+    if (result.error) {
+    // Inform the user if there was an error.
+    var errorElement = document.getElementById('card-errors');
+    errorElement.textContent = result.error.message;
+    } else {
+    // Send the token to your server.
+    stripeTokenHandler(result.token);
+    }
+});
+});
 
-        // Submit the form with the token ID.
-        function stripeTokenHandler(token) {
-        // Insert the token ID into the form so it gets submitted to the server
-        var form = document.getElementById('payment-form');
-        var hiddenInput = document.createElement('input');
-        hiddenInput.setAttribute('type', 'hidden');
-        hiddenInput.setAttribute('name', 'stripeToken');
-        hiddenInput.setAttribute('value', token.id);
-        form.appendChild(hiddenInput);
+// Submit the form with the token ID.
+function stripeTokenHandler(token) {
+// Insert the token ID into the form so it gets submitted to the server
+var form = document.getElementById('payment-form');
+var hiddenInput = document.createElement('input');
+hiddenInput.setAttribute('type', 'hidden');
+hiddenInput.setAttribute('name', 'stripeToken');
+hiddenInput.setAttribute('value', token.id);
+form.appendChild(hiddenInput);
 
-        // Submit the form
-        // alert(token.id);
-        form.submit();
-        }
+// Submit the form
+// alert(token.id);
+form.submit();
+}
 </script>
 @endsection

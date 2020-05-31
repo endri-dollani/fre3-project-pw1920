@@ -74,7 +74,7 @@
                             <a href="/"><img src="{{asset('img/logo/logo.svg')}}" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-xl-8 col-lg-8">
+                    <div class="col-xl-9 col-lg-9 col-md-12 ">
                         <!-- main-menu -->
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
@@ -82,69 +82,36 @@
                                     <li><a href="/">Home</a></li>
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/services">Business</a></li>
-                                    <li><a href="/blog">Blog</a>
-                                        <!-- <ul class="submenu"> -->
-                                        <!-- <li><a href="blog.html">Blog</a></li> -->
-                                        {{-- <li><a href="/single-blog">Blog Details</a></li> --}}
-                                        <!-- </ul> -->
-                                    </li>
-                                    <!-- <li><a href="#">Pages</a> -->
-                                    <!-- <ul class="submenu"> -->
-                                    <!-- <li><a href="rooms.html">Rooms</a> -->
-                                    <!-- <li><a href="elements.html">Element</a></li> -->
-                                    <!-- </ul> -->
-                                    <!-- </li> -->
+                                    <li><a href="/posts">Blog</a></li>
                                     <li><a href="/contact">Contact</a></li>
+                                    @guest
+                                    <li><a href="{{ route('login') }}"  >{{ __('Login') }}</a></li>
+                                    @if (Route::has('register'))
+                                    <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                                    @endif
+                                    @else   
+                                    <li><a href="/dashboard"> My Profile</a>
+                                        <ul class="submenu">
+                                            <li><a href="/dashboard">Dashboard</a></li>
+                                            @if ( Auth::user()->is_business == 0)
+                                               <li><a href="/checkout-business">Upgrade to business</a></li>
+                                            @endif
+                                            <li>
+                                                <a href="single-blog.html" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <!-- Authentication Links -->
-                    @guest
-                    <div class="col-xl-1 col-lg-1">
-                        <!-- header-btn -->
-                        <div class="header-btn">
-                            <a href="{{ route('login') }}" class="btn btn1 d-none d-lg-block "
-                                style="font-size: 12px">{{ __('Login') }}</a>
-                        </div>
-       
-
-                    </div>
-                    @if (Route::has('register'))
-                    <div class="col-xl-1 col-lg-1">
-                        <!-- header-btn -->
-                        <div class="header-btn">
-                            <a href="{{ route('register') }}" class="btn btn1 d-none d-lg-block"
-                                style="font-size: 12px">{{ __('Register') }}</a>
-                        </div>
-                    </div>
-                    @endif
-                    @else
-               
-                    <div class="main-menu d-none d-lg-block">
-                        <nav>
-                            <ul id="navigation">
-
-                                <li><a href="#"> {{ Auth::user()->name }} <span class="caret"></span></a>
-                                    <ul class="submenu">
-                                        <li><a href="/dashboard">Dashboard</a></li>
-                                        <li><a href="/checkout-business">Upgrade to business</a></li>
-                                        <li>
-                                            <a href="single-blog.html" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    @endguest
                     <!-- Mobile Menu -->
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>

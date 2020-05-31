@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,4 +35,12 @@ Route::get('/checkout-business', 'CheckoutBusinessController@index')->name('chec
 Route::post('/checkout-business', 'CheckoutBusinessController@store')->name('checkout-business.store');
 
 Route::resource('posts', 'PostsController');
+Route::get('/reservate/{id}', 'CheckoutBusinessController@reservate')->name('post.reservate');
+Route::post('/reservate', 'CheckoutBusinessController@reservated')->name('post.reservated');
+Route::resource('profile', 'UserProfileController');
+Route::resource('business', 'BusinessController');
+
+
+
+
 

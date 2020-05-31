@@ -6,9 +6,16 @@ use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class CheckoutBusinessController extends Controller
 {
+    public function __construct()
+    {   
+        //Kjo ndalon vezhgimin e posteve pa u loguar me pare.
+        // Brenda [] vendosen faqet qe do shfaqen dhe pse useri nuk eshte loguar ose regjistruar:
+        $this->middleware('auth');
+    } 
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,16 @@ class CheckoutBusinessController extends Controller
      */
     public function index()
     {
-        return view('pages.checkout-business');
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        
+        if($user->is_business == 0){
+               return view('pages.checkout-business');
+        }
+       else {
+              return redirect('/dashboard');
+       }
+     
     }
 
     /**
@@ -40,7 +56,8 @@ class CheckoutBusinessController extends Controller
         
         try {
             //code...
-    
+            
+            
             $charge = Stripe::charges()->create([
                 'amount' => 199.99,
                 'currency' => 'CAD',
@@ -56,7 +73,17 @@ class CheckoutBusinessController extends Controller
     
             ]);
             //Succes
-            return redirect('/dashboard')->with('success','Thank you , your payment has been accepted.' );
+            $user_id = auth()->user()->id;
+            $user = User::find($user_id);
+            $user->is_business = 1;
+
+            $user->business_name = $request->input('business-name');
+            $user->business_address = $request->input('address');
+            $user->business_city = $request->input('city');
+            $user->business_number = $request->input('phone-number');
+
+            $user->save();
+            return redirect('/checkout-business')->with('success','Thank you , your payment has been accepted.' );
         } catch (CardErrorException $e) {
             //throw $e
            return redirect('/checkout-business')->with('error', $e->getMessage());
@@ -108,4 +135,50 @@ class CheckoutBusinessController extends Controller
     {
         //
     }
+
+
+    public function reservate(){
+        return view('posts.reservate');
+}
+
+public function reservated(Request $request){
+    try {
+        //code...
+        
+        
+     
+        //Succes
+          $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        if($user->is_business == 1){
+            return redirect('/posts')->with('error','A business cant make a reservation.' );
+        }
+            $charge = Stripe::charges()->create([
+                'amount' => 199.99,
+                'currency' => 'CAD',
+                'source' => $request->stripeToken,
+                'description' =>  'Reservation payed',
+                'receipt_email' => $request->email,
+                'metadata' => [
+                    'data1' => 'metadata 1',
+                    'data2' => 'metadata 3',
+                    'data3' => 'metadata 3',
+    
+                ],
+    
+            ]);
+
+        // $user->business_name = $request->input('business-name');
+        // $user->business_address = $request->input('address');
+        // $user->business_city = $request->input('city');
+        // $user->business_number = $request->input('phone-number');
+
+        // $user->save();
+        return redirect('/posts')->with('success','Thank you , your reservation payment has been accepted.' );
+    } catch (CardErrorException $e) {
+        //throw $e
+       return redirect('/posts')->with('error', $e->getMessage());
+ 
+    }
+}
 }

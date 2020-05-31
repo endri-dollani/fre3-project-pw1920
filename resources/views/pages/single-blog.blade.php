@@ -600,24 +600,4 @@
 <!-- Jquery Plugins, main Jquery -->
 <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-
-<script>
-    $('#datepicker').datepicker({
-              iconsLibrary: 'fontawesome',
-              disableDaysOfWeek: [0, 0],
-          //     icons: {
-          //      rightIcon: '<span class="fa fa-caret-down"></span>'
-          //  }
-          });
-          $('#datepicker2').datepicker({
-              iconsLibrary: 'fontawesome',
-              icons: {
-               rightIcon: '<span class="fa fa-caret-down"></span>'
-           }
-  
-          });
-          var timepicker = $('#timepicker').timepicker({
-           format: 'HH.MM'
-       });
-</script>
 @endsection

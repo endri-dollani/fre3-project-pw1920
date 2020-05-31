@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Edit Post</h1>
+<div class="container pt-4">
+    <h1 class="contact-title">Edit Post</h1>
     {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
             {{Form::label('title', 'Title')}}
@@ -15,8 +16,44 @@
         <div class="form-froup pb-3">
             {{Form::file('cover_image')}}    
         </div>  
+         @if (Auth::user()->is_business == 1)
+            <hr>
+            <h2 class="contact-title">Reservation card details</h2>
+            <div class="form-group">
+                {{Form::label('checkin', 'Checkin date')}}
+                {{Form::text('checkin', $post->checkin_date, ['class' => 'form-control col-sm-4', 'placeholder' => 'dd/mm/yyyy'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('checkout', 'Checkout date')}}
+                {{Form::text('checkout', $post->checkout_date, ['class' => 'form-control col-sm-4', 'placeholder' => 'dd/mm/yyyy'])}}
+            </div>
+
+            <div class="form-group">
+                {{Form::label('adults', 'Adults/per room')}}
+                {{Form::text('adults', $post->checkout_date, ['class' => 'form-control col-sm-4', 'placeholder' => 'Number of adults'])}}
+            </div>
+
+            <div class="form-group">
+                {{Form::label('children', 'Children/per room')}}
+                {{Form::text('children', $post->kids, ['class' => 'form-control col-sm-4', 'placeholder' => 'Number of children'])}}
+            </div>
+
+            <div class="form-group">
+                {{Form::label('rooms', 'Rooms available')}}
+                {{Form::text('rooms', $post->rooms, ['class' => 'form-control col-sm-4', 'placeholder' => 'Number of rooms available'])}}
+            </div>
+
+            <div class="form-group">
+                {{Form::label('price', 'Reservation Price')}}
+                {{Form::text('price', $post->price, ['class' => 'form-control col-sm-4', 'placeholder' => 'Enter a price'])}}
+            </div>
+            
+        @endif
         {{Form::hidden('_method', 'PUT')}} 
-        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Submit', ['class' => 'genric-btn info'])}}
+        <br> <br>
+        <br> <br>
+        <br> <br>
     {!! Form::close() !!}
 
     <!-- JS here -->

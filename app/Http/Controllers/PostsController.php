@@ -43,9 +43,11 @@ class PostsController extends Controller
             Ne qoftese numri i posteve qe do shfaqen e kalon numrin e percaktuar
             do shfaqen linqe te cilat pasi klikohen do shfaqin aq poste sa thote limiti
         */
-        $posts = Post::orderby('created_at', 'desc')->paginate(10);
+        $posts = Post::orderby('created_at', 'desc')->paginate(2);
         return view('posts.index')->with('posts', $posts);
     }
+
+  
 
     /**
      * Show the form for creating a new resource.
@@ -65,11 +67,27 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
-        ]);
+        if(auth()->user()->is_business == 0){
+            $this->validate($request, [
+                'title' => 'required',
+                'body' => 'required',
+                'cover_image' => 'image|nullable|max:1999'
+            ]);
+        }
+        else {
+            $this->validate($request, [
+                'title' => 'required',
+                'body' => 'required',
+                'cover_image' => 'image|nullable|max:1999',
+                'checkin' => 'required',
+                'checkout' => 'required',
+                'adults' => 'required',
+                'children' => 'required',
+                'rooms' => 'required',
+                'price' => 'required',
+
+            ]);
+        }
         
         //Handle file upload: 
         if($request->hasFile('cover_image')){
@@ -94,6 +112,15 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->cover_image = $fileNameToStore;
+
+        if(auth()->user()->is_business == 1){
+            $post->checkin_date = $request->input('checkin');
+            $post->checkout_date = $request->input('checkout');
+            $post->rooms = $request->input('rooms');
+            $post->adults = $request->input('adults');
+            $post->kids = $request->input('children');
+            $post->price = $request->input('price');
+        }
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -193,4 +220,6 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');
     }
+
+   
 }

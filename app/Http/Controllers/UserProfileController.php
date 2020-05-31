@@ -6,15 +6,22 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 use App\User;
-class BusinessController extends Controller
-{
 
+class UserProfileController extends Controller
+{
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {   
         //Kjo ndalon vezhgimin e posteve pa u loguar me pare.
         // Brenda [] vendosen faqet qe do shfaqen dhe pse useri nuk eshte loguar ose regjistruar:
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth');
     } 
+
+  
     /**
      * Display a listing of the resource.
      *
@@ -22,8 +29,9 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        //
     }
+
+   
 
     /**
      * Show the form for creating a new resource.
@@ -54,7 +62,8 @@ class BusinessController extends Controller
      */
     public function show($id)
     {
-        //
+   
+        
     }
 
     /**
@@ -65,16 +74,12 @@ class BusinessController extends Controller
      */
     public function edit($id)
     {
+
         $user = User::find($id);
-        
         if(auth()->user()->id != $id){
             return redirect('/dashboard');
         }
-
-        if($user->is_business == 0){
-            return redirect('/dashboard');
-        }
-        return view('business.edit')->with('user', $user);
+        return view('profile.edit')->with('user', $user);
     }
 
     /**
@@ -87,22 +92,33 @@ class BusinessController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:20',
-            'address' => 'required|max:20',
-            'city' => 'required|max:20',
-            'number' => 'required|max:15|min:8',
+            'name' => 'max:20'
         ]);
 
-        $user = User::find($id);
-        $user->business_name = $request->input('name');
-        $user->business_address = $request->input('address');
-        $user->business_city = $request->input('city');
-        $user->business_number = $request->input('number');
+         //Handle file upload: 
+         if($request->hasFile('profile_pic')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('profile_pic')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //Get just extension
+            $extension = $request->file('profile_pic')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //Upload image
+            $path = $request->file('profile_pic')->storeAs('public/profile_pics',$fileNameToStore);
+        }
         
-       
+
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->user_bio = $request->input('bio');
+        if($request->hasFile('profile_pic')){
+            $user->profile_pic = $fileNameToStore;
+        }
         $user->save();
 
-        return redirect('/dashboard')->with('success', 'Your business account was updated successfully');
+        return redirect('/dashboard')->with('success', 'Profile Updated');
     }
 
     /**

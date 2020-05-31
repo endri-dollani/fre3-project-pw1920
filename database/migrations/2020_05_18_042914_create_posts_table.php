@@ -17,6 +17,12 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->mediumText('body');
+            $table->string('checkin_date')->nullable();
+            $table->string('checkout_date')->nullable();
+            $table->string('rooms')->nullable();
+            $table->string('adults')->nullable();
+            $table->string('kids')->nullable();
+            $table->double('price',8,2)->default('0.00');
             $table->timestamps();
         });
     }
