@@ -31,11 +31,11 @@
             <div class="row">
                 <div class="col-xl-5 col-lg-6">
                     <div class="customer-img mb-120">
-                        <img src="{{asset('img/customer/customar1.png')}}" class="customar-img1" alt="">
+                        <img src="{{asset('img/hero/bussines_cover.jpg')}}" class="customar-img1" alt="">
                         <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
-                        <div class="service-experience heartbeat">
+                        {{-- <div class="service-experience heartbeat">
                             <h3>68 Years of Service<br>Experience</h3>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class=" col-xl-4 col-lg-4">

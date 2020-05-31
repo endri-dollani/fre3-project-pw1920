@@ -10,6 +10,10 @@ class PagesController extends Controller
         $title = 'Welcome to Laravel';
         return view('pages.index')->with('title', $title);
     }
+
+    public function store(Request $request){
+       dd($request->all());
+    }
     
     public function about(){
         $title = 'About Us';

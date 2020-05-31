@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
 
-Route::get('/','PagesController@index');
+Route::get('/','PagesController@index')->name('home.index');
+Route::post('/','PagesController@store')->name('home.store');
 
 Route::get('/about', 'PagesController@about');
 
@@ -28,6 +30,8 @@ Route::get('/single-blog', 'PagesController@singleblog');
 
 Route::get('/contact', 'PagesController@contact');
 
+Route::get('/checkout-business', 'CheckoutBusinessController@index')->name('checkout-business.index');
+Route::post('/checkout-business', 'CheckoutBusinessController@store')->name('checkout-business.store');
 
 Route::resource('posts', 'PostsController');
 

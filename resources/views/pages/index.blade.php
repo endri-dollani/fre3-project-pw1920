@@ -28,32 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slider  hero-overly slider-height d-flex align-items-center"
-                data-background="{{asset('img/hero/h1_hero.jpg')}}">
-                <div class="container">
-                    <div class="row justify-content-center text-center">
-                        <div class="col-xl-9">
-                            <div class="h1-slider-caption">
-                                <h1 data-animation="fadeInUp" data-delay=".4s">top hotel in the city</h1>
-                                <h3 data-animation="fadeInDown" data-delay=".4s">Hotel & Resourt</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slider  hero-overly slider-height d-flex align-items-center"
-                data-background="{{asset('img/hero/h1_hero.jpg')}}">
-                <div class="container">
-                    <div class="row justify-content-center text-center">
-                        <div class="col-xl-9">
-                            <div class="h1-slider-caption">
-                                <h1 data-animation="fadeInUp" data-delay=".4s">top hotel in the city</h1>
-                                <h3 data-animation="fadeInDown" data-delay=".4s">Hotel & Resourt</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
     <!-- slider Area End-->
@@ -63,7 +38,8 @@
         <div class="container">
             <div class="row ">
                 <div class="col-12">
-                    <form action="">
+                    <form action="{{route('home.store')}}" method="POST" >
+                        {{csrf_field()}}
                         <div class="booking-wrap d-flex justify-content-between align-items-center">
 
                             <!-- select in date -->
@@ -73,7 +49,7 @@
                                     <span> Check In Date:</span>
                                 </div>
                                 <div class="boking-datepicker">
-                                    <input id="datepicker1" placeholder="10/12/2020" />
+                                    <input name="datepicker1" id="datepicker1" placeholder="10/12/2020" />
                                 </div>
                             </div>
                             <!-- Single Select Box -->
@@ -83,7 +59,7 @@
                                     <span>Check OutDate:</span>
                                 </div>
                                 <div class="boking-datepicker">
-                                    <input id="datepicker2" placeholder="12/12/2020" />
+                                    <input name="datepicker2" id="datepicker2" placeholder="12/12/2020" />
                                 </div>
                             </div>
                             <!-- Single Select Box -->
@@ -92,16 +68,17 @@
                                     <span>Adults:</span>
                                 </div>
                                 <div class="select-this">
-                                    <form action="#">
+                                    
                                         <div class="select-itms">
-                                            <select name="select" id="select1">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4</option>
+                                            <select name="select1" id="select1">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
                                             </select>
                                         </div>
-                                    </form>
+                                  
                                 </div>
                             </div>
                             <!-- Single Select Box -->
@@ -110,17 +87,17 @@
                                     <span>Children:</span>
                                 </div>
                                 <div class="select-this">
-                                    <form action="#">
+                                 
                                         <div class="select-itms">
-                                            <select name="select" id="select2">
-                                                <option value="">0</option>
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4</option>
+                                            <select name="select2" id="select2">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
                                             </select>
                                         </div>
-                                    </form>
+                                  
                                 </div>
                             </div>
                             <!-- Single Select Box -->
@@ -129,21 +106,23 @@
                                     <span>Rooms:</span>
                                 </div>
                                 <div class="select-this">
-                                    <form action="#">
+                                
                                         <div class="select-itms">
-                                            <select name="select" id="select3">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4</option>
+                                            <select name="select3" id="select3">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
                                             </select>
                                         </div>
-                                    </form>
+                               
                                 </div>
                             </div>
                             <!-- Single Select Box -->
                             <div class="single-select-box pt-45 mb-30">
-                                <a href="#" class="btn select-btn">Search</a>
+                                <button type="submit"  class="btn select-btn">Search</button>
+                               {{-- <input type="submit" class="btn select-btn" > --}}
                             </div>
 
 
@@ -161,11 +140,11 @@
             <div class="row">
                 <div class="col-xl-5 col-lg-6">
                     <div class="customer-img mb-120">
-                        <img src="{{asset('img/customer/customar1.png')}}" class="customar-img1" alt="">
+                        <img src="{{asset('img/hero/bussines_cover.jpg')}}" class="customar-img1" alt="">
                         <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
-                        <div class="service-experience heartbeat">
+                        {{-- <div class="service-experience heartbeat">
                             <h3>68 Years of Service<br>Experience</h3>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class=" col-xl-4 col-lg-4">
@@ -302,9 +281,12 @@
      <!-- Dining Start -->
      <div class="dining-area dining-padding-top">
         <!-- Single Left img -->
-        <div class="single-dining-area left-img">
+        <div class="single-dining-area ">
+
             <div class="container">
                 <div class="row justify-content-end">
+            <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
+
                     <div class="col-lg-8 col-md-8">
                         <div class="dining-caption">
                             <span>Grow as a bussines</span>
@@ -318,7 +300,7 @@
             </div>
         </div>
         <!-- single Right img -->
-        <div class="single-dining-area right-img">
+        <div class="single-dining-area  ">
             <div class="container">
                 <div class="row justify-content-start">
                     <div class="col-lg-8 col-md-8">
@@ -331,7 +313,10 @@
                             </p>
                           
                         </div>
+
                     </div>
+                    <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
+
                 </div>
             </div>
         </div>

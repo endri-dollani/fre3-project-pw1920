@@ -28,9 +28,9 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="{{asset('img/blog/single_blog_1.png')}}" alt="">
-                            <a href="#" class="blog_item_date">
+                            {{-- <a href="#" class="blog_item_date">
                                 <h3>Reservate</h3>
-                            </a>
+                            </a> --}}
                         </div>
 
                         <div class="blog_details">

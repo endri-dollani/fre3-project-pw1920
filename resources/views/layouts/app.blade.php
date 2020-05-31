@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/stripe-payment.css')}}" type="text/css">
    
 </head>
 <body>

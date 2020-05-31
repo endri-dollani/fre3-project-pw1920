@@ -128,7 +128,7 @@
                                 <li><a href="#"> {{ Auth::user()->name }} <span class="caret"></span></a>
                                     <ul class="submenu">
                                         <li><a href="/dashboard">Dashboard</a></li>
-                                        <li><a href="#">Upgrade to business</a></li>
+                                        <li><a href="/checkout-business">Upgrade to business</a></li>
                                         <li>
                                             <a href="single-blog.html" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

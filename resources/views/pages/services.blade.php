@@ -32,44 +32,50 @@
     </div>
     <!-- slider Area End-->
 
-    <!-- Dining Start -->
-    <div class="dining-area dining-padding-top">
-        <!-- Single Left img -->
-        <div class="single-dining-area left-img">
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-lg-8 col-md-8">
-                        <div class="dining-caption">
-                            <span>Grow as a bussines</span>
-                            <h3>Create offers and make your customers happy!</h3>
-                            <p>By using our website you can promote your tourism business by <br> 
-                                creating reservation tables for customers. <br> 
-                            </p>
-                        </div>
+   <!-- Dining Start -->
+   <div class="dining-area dining-padding-top">
+    <!-- Single Left img -->
+    <div class="single-dining-area ">
+
+        <div class="container">
+            <div class="row justify-content-end">
+        <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
+
+                <div class="col-lg-8 col-md-8">
+                    <div class="dining-caption">
+                        <span>Grow as a bussines</span>
+                        <h3>Create offers and make your customers happy!</h3>
+                        <p>By using our website you can promote your tourism business by <br> 
+                            creating reservation tables for customers. <br> 
+                        </p>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- single Right img -->
-        <div class="single-dining-area right-img">
-            <div class="container">
-                <div class="row justify-content-start">
-                    <div class="col-lg-8 col-md-8">
-                        <div class="dining-caption text-right">
-                            <span>Our Services</span>
-                            <h3>What we offer.</h3>
-                            <p>
-                                By using this website you have acces to <br> post and create reservation tables, for your customers. <br>
-                                Transactions are made online and are secure. <br>
-                            </p>
-                          
-                        </div>
-                    </div>
-                </div>
+                </div>      
             </div>
         </div>
     </div>
-    <!-- Dining End -->
+    <!-- single Right img -->
+    <div class="single-dining-area  ">
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-lg-8 col-md-8">
+                    <div class="dining-caption text-right">
+                        <span>Our Services</span>
+                        <h3>What we offer.</h3>
+                        <p>
+                            By using this website you have acces to <br> post and create reservation tables, for your customers. <br>
+                            Transactions are made online and are secure. <br>
+                        </p>
+                      
+                    </div>
+
+                </div>
+                <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Dining End -->
 
     {{-- <!-- Testimonial Start -->
     <div class="testimonial-area t-padding">

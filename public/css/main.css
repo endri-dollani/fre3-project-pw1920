@@ -4005,7 +4005,8 @@ label {
   top: 0;
   bottom: 0;
   /* background-image: url('{{asset(\'img/dining/dining-img2.png\')'); */
-    background-image: url('{{asset(\'img/dining/grow.jpg\')');
+    /* background-image: url('{{asset(\'img/dining/grow.jpg\')'); */
+      background-image: url('{{asset(\'img/hero/bussines_cover.jpg\')}}');
   width: 50%;
   border-radius: 0 0 0 5px;
   background-repeat: no-repeat;
