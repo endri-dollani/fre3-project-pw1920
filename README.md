@@ -5,6 +5,7 @@ Tourist CheckPoint është një website në te cilin turistët e huaj apo vendas
 
 ## Fre3 Team:
 **Endri Dollani**
+* Frontend developer
 * Backend developer
 * Project manager
 
