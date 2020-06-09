@@ -1,67 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <a href="/posts" class="btn btn-default">Go Back</a>
+{{-- <a href="/posts" class="btn btn-default">Go Back</a>
     <h1>{{$post->title}}</h1>
-    <img src="/storage/cover_images/{{$post->cover_image}}" style="width: 100%;">
-    <br> <br>
-    <div>
-        {{$post->body}}
-    </div>
-    <hr>
-    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
-    <hr>
-    @if (!Auth::guest())    
-        @if (Auth::user()->id == $post->user_id)
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
+<img src="/storage/cover_images/{{$post->cover_image}}" style="width: 100%;">
+<br> <br>
+<div>
+    {{$post->body}}
+</div>
+<hr>
+<small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+<hr>
+@if (!Auth::guest())
+@if (Auth::user()->id == $post->user_id)
+<a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
 
-            {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
-            {{Form::hidden('_method', 'DELETE')}}
-            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-            {!!Form::close()!!}
-        @endif
-    @endif --}}
+{!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+{{Form::hidden('_method', 'DELETE')}}
+{{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+{!!Form::close()!!}
+@endif
+@endif --}}
 
-    <div class="container pt-5">
-        <a href="/posts" class="genric-btn info">Go Back</a>
-    </div>
+<div class="container pt-5">
+    <a href="/posts" class="genric-btn info">Go Back</a>
+</div>
 <!--================Blog Area =================-->
 <section class="blog_area single-post-area section-padding">
-    
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 posts-list">
                 <div class="single-post">
                     <div class="feature-img">
-                        <img src="/storage/cover_images/{{$post->cover_image}}" class="" style="width: 90%; height: 400px;" alt="">
+                        <img src="/storage/cover_images/{{$post->cover_image}}" class=""
+                            style="width: 90%; height: 400px;" alt="">
                     </div>
                     {{-- <div class="blog_item_img">
                         <a href="#" class="blog_item_date">
                             <h3>Reservate</h3>
                         </a>
                     </div> --}}
-                  
+
                     <div class="blog_details">
                         <h2>{{$post->title}}</h2>
-                        <ul class="blog-info-link mt-3 mb-4">
+                        {{-- <ul class="blog-info-link mt-3 mb-4">
                             <li><span style="color: grey;"><i class="fa fa-user"></i> Travel, Lifestyle</span></li>
                             <li><span style="color: grey;"><i class="fa fa-comments"></i> 03 Comments</span></li>
-                            <li><span style="color: grey;">Written on {{$post->created_at}} by {{$post->user->name}}</span></li>
-                        </ul>
+                            <li><span style="color: grey;">Written on {{$post->created_at}} by
+                        {{$post->user->name}}</span></li>
+                        </ul> --}}
                         <p class="excert">
                             {{$post->body}}
                         </p>
                     </div>
                     @if ($post->user->is_business == 1)
-                           <div class="col-xl-8 pt-4 col-lg-8 col-md-8">
+                    <div class="col-xl-8 pt-4 col-lg-8 col-md-8">
                         <!-- Reservation Details -->
                         <div class="single-room mb-50 ">
                             <div class="room-caption">
-                                <h3><a href="{{route('post.reservate',$post->id)}}" style="color: #dca73a !important;">Reservate Now</a></h3>
+                                <h3><a href="{{route('post.reservate',$post->id)}}"
+                                        style="color: #dca73a !important;">Reservate Now</a></h3>
                                 <div>
                                     <span>Checkin date:</span>
                                     <h5> {{$post->checkin_date}}</h5>
-                                   <span>Checkout date:</span> 
+                                    <span>Checkout date:</span>
                                     <h5> {{$post->checkout_date}}</h5>
                                 </div>
                                 <span>Our {{$post->rooms}} room('s) can accommodate:</span>
@@ -72,14 +75,14 @@
                                 <div class="per-night">
                                     <span><u>$</u>{{$post->price}} <span>/ per night</span></span>
                                 </div>
-                               
+
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     @endif
-                 
+
                 </div>
-                <div class="navigation-top">
+                {{-- <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
                         <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
                             people like this</p>
@@ -88,131 +91,138 @@
                      
                     </div>
                   
-    </div>
-    <div class="blog-author">
-        <div class="media align-items-center">
-            @if (!Auth::guest())    
-                @if (Auth::user()->id == $post->user_id)
-                    
-                <a href="/dashboard">
-                    @if ($post->user->profile_pic == null)
-                             <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">  
-                    @else
-                       <img src="/storage/profile_pics/{{$post->user->profile_pic}}" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                    @endif
-                    <div class="media-body">
+    </div> --}}
+                <div class="blog-author">
+                    <div class="media align-items-center">
+                        @if (!Auth::guest())
+                        @if (Auth::user()->id == $post->user_id)
+
                         <a href="/dashboard">
-                            <h4>{{$post->user->name}}
-                                @if ($post->user->is_business == 1)
-                                <small class="ml-2" style="color:#30b330;"><i class="fas fa-check-circle"></i></small>
-                                @endif
-                            
-                            </h4>
-                        </a>
-                        <p>{{$post->user->user_bio}}</p>
-                    </div>
-                   
-                </a>
-               
-              
-                @else
-                    @if ($post->user->profile_pic == null)
-                    <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                    @else 
-                    <img src="/storage/profile_pics/{{$post->user->profile_pic}}" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-
-                      @endif
-                
-                    <div class="media-body">
-                            <h4>{{$post->user->name}}
-                                @if ($post->user->is_business == 1)
-                                <small class="ml-2" style="color:#30b330;"><i class="fas fa-check-circle"></i></small>
-                                @endif
-                            </h4>
-                        <p>{{$post->user->user_bio}}</p>
-                    </div>
-                 @endif
-            @else
-                @if ($post->user->profile_pic == null)
-                 <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                @else 
-                <img src="/storage/profile_pics/{{$post->user->profile_pic}}" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-
-                @endif
-                <div class="media-body">
-                        <h4>{{$post->user->name}}
-                            @if ($post->user->is_business == 1)
-                            <small class="ml-2" style="color:#30b330;"><i
-                                    class="fas fa-check-circle"></i></small>
+                            @if ($post->user->profile_pic == null)
+                            <img src="/storage/profile_pics/noprofilepic.jpg"
+                                style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                            @else
+                            <img src="/storage/profile_pics/{{$post->user->profile_pic}}"
+                                style="width: 50px; height: 50px; border-radius: 50%;" alt="">
                             @endif
-                        </h4>
-                    <p>{{$post->user->user_bio}}</p>
-                </div>
-         
-            @endif
-            {{-- <a href="/dashboard">
+                            <div class="media-body">
+                                <a href="/dashboard">
+                                    <h4>{{$post->user->name}}
+                                        @if ($post->user->is_business == 1)
+                                        <small class="ml-2" style="color:#30b330;"><i
+                                                class="fas fa-check-circle"></i></small>
+                                        @endif
+
+                                    </h4>
+                                </a>
+                                <p>{{$post->user->user_bio}}</p>
+                            </div>
+
+                        </a>
+
+
+                        @else
+                        @if ($post->user->profile_pic == null)
+                        <img src="/storage/profile_pics/noprofilepic.jpg"
+                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                        @else
+                        <img src="/storage/profile_pics/{{$post->user->profile_pic}}"
+                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+
+                        @endif
+
+                        <div class="media-body">
+                            <h4>{{$post->user->name}}
+                                @if ($post->user->is_business == 1)
+                                <small class="ml-2" style="color:#30b330;"><i class="fas fa-check-circle"></i></small>
+                                @endif
+                            </h4>
+                            <p>{{$post->user->user_bio}}</p>
+                        </div>
+                        @endif
+                        @else
+                        @if ($post->user->profile_pic == null)
+                        <img src="/storage/profile_pics/noprofilepic.jpg"
+                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                        @else
+                        <img src="/storage/profile_pics/{{$post->user->profile_pic}}"
+                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+
+                        @endif
+                        <div class="media-body">
+                            <h4>{{$post->user->name}}
+                                @if ($post->user->is_business == 1)
+                                <small class="ml-2" style="color:#30b330;"><i class="fas fa-check-circle"></i></small>
+                                @endif
+                            </h4>
+                            <p>{{$post->user->user_bio}}</p>
+                        </div>
+
+                        @endif
+                        {{-- <a href="/dashboard">
             @if ($post->user->profile_pic == null)
               
                  <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">  
             @else
-                    <img src="/storage/profile_pics/{{$post->user->profile_pic}}" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-            @endif
-                
-            </a> --}}
-            
-        </div>
-        @if ($post->user->is_business == 1)
-        <div class="blog-author pb-4 pt-4"">
+                    <img src="/storage/profile_pics/{{$post->user->profile_pic}}" style="width: 50px; height: 50px;
+                        border-radius: 50%;" alt="">
+                        @endif
+
+                        </a> --}}
+
+                    </div>
+                    @if ($post->user->is_business == 1)
+                    <div class="blog-author pb-4 pt-4"">
             <div class=" media align-items-center">
 
-                <table class="table table-striped">
-                    <tr>
-                        <th>Business Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Phone Number</th>
-                    </tr>
-                    <tr>
-                        <td>{{$post->user->business_name}}</td>
-                        <td>{{$post->user->business_address}}</td>
-                        <td>{{$post->user->business_city}}</td>
-                        <td>{{$post->user->business_number}}</td>
-                    </tr>
-                </table>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Business Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>Phone Number</th>
+                            </tr>
+                            <tr>
+                                <td>{{$post->user->business_name}}</td>
+                                <td>{{$post->user->business_address}}</td>
+                                <td>{{$post->user->business_city}}</td>
+                                <td>{{$post->user->business_number}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                @endif
             </div>
-        </div>
-        @endif
-    </div>
-    <div class="comments-area">
-        <h4>05 Comments</h4>
-        <div class="comment-list">
+            <div class="comments-area">
+                {{-- <h4>05 Comments</h4> --}}
+                {{-- <div class="comment-list">
             <div class="single-comment justify-content-between d-flex">
                 <div class="user justify-content-between d-flex">
                     <div class="thumb">
                         <img src="{{asset('img/comment/comment_1.png')}}" alt="">
+            </div>
+            <div class="desc">
+                <p class="comment">
+                    Multiply sea night grass fourth day sea lesser rule open subdue female fill
+                    which them
+                    Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+                </p>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <h5>
+                            <a href="#">Emilly Blunt</a>
+                        </h5>
+                        <p class="date">December 4, 2017 at 3:12 pm </p>
                     </div>
-                    <div class="desc">
-                        <p class="comment">
-                            Multiply sea night grass fourth day sea lesser rule open subdue female fill
-                            which them
-                            Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <h5>
-                                    <a href="#">Emilly Blunt</a>
-                                </h5>
-                                <p class="date">December 4, 2017 at 3:12 pm </p>
-                            </div>
-                            <div class="reply-btn">
-                                <a href="#" class="btn-reply text-uppercase">reply</a>
-                            </div>
-                        </div>
+                    <div class="reply-btn">
+                        <a href="#" class="btn-reply text-uppercase">reply</a>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- <div class="comment-list">
+    </div>
+    </div> --}}
+    {{-- <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
@@ -267,7 +277,7 @@
         </div>
     </div> --}}
     </div>
-    <div class="comment-form">
+    {{-- <div class="comment-form">
         <h4>Leave a Reply</h4>
         <form class="form-contact comment_form" action="#" id="commentForm">
             <div class="row">
@@ -298,19 +308,16 @@
                     Message</button>
             </div>
         </form>
-    </div>
+    </div> --}}
     </div>
     <div class="col-lg-4">
         <div class="blog_right_sidebar">
             <aside class="single_sidebar_widget search_widget">
-                <form action="#">
+                <form action="{{route('search')}}" method="GET">
                     <div class="form-group">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder='Search Keyword'
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                            <div class="input-group-append">
-                                <button class="btn" type="button"><i class="ti-search"></i></button>
-                            </div>
+                            <input type="text" class="form-control" name="query" id="query"
+                                value="{{request()->input('query')}}" placeholder='Search Keyword'>
                         </div>
                     </div>
                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
@@ -362,41 +369,41 @@
                 <h3 class="widget_title">Recent Post</h3>
                 <div class="media post_item">
                     <img src="{{asset('img/post/post_1.png')}}" alt="post">
-                    <div class="media-body">
-                        <a href="single-blog.html">
-                            <h3>From life was you fish...</h3>
-                        </a>
-                        <p>January 12, 2019</p>
-                    </div>
-                </div> --}}
-                {{-- <div class="media post_item">
-                            <img src="{{asset('img/post/post_2.png')}}" alt="post">
-                <div class="media-body">
-                    <a href="single-blog.html">
-                        <h3>The Amazing Hubble</h3>
-                    </a>
-                    <p>02 Hours ago</p>
-                </div>
-        </div>
-        <div class="media post_item">
-            <img src="{{asset('img/post/post_3.png')}}" alt="post">
             <div class="media-body">
                 <a href="single-blog.html">
-                    <h3>Astronomy Or Astrology</h3>
+                    <h3>From life was you fish...</h3>
                 </a>
-                <p>03 Hours ago</p>
-            </div>
-        </div>
-        <div class="media post_item">
-            <img src="{{asset('img/post/post_4.png')}}" alt="post">
-            <div class="media-body">
-                <a href="single-blog.html">
-                    <h3>Asteroids telescope</h3>
-                </a>
-                <p>01 Hours ago</p>
+                <p>January 12, 2019</p>
             </div>
         </div> --}}
-        {{-- </aside>
+        {{-- <div class="media post_item">
+                            <img src="{{asset('img/post/post_2.png')}}" alt="post">
+        <div class="media-body">
+            <a href="single-blog.html">
+                <h3>The Amazing Hubble</h3>
+            </a>
+            <p>02 Hours ago</p>
+        </div>
+    </div>
+    <div class="media post_item">
+        <img src="{{asset('img/post/post_3.png')}}" alt="post">
+        <div class="media-body">
+            <a href="single-blog.html">
+                <h3>Astronomy Or Astrology</h3>
+            </a>
+            <p>03 Hours ago</p>
+        </div>
+    </div>
+    <div class="media post_item">
+        <img src="{{asset('img/post/post_4.png')}}" alt="post">
+        <div class="media-body">
+            <a href="single-blog.html">
+                <h3>Asteroids telescope</h3>
+            </a>
+            <p>01 Hours ago</p>
+        </div>
+    </div> --}}
+    {{-- </aside>
         <aside class="single_sidebar_widget tag_cloud_widget">
             <h4 class="widget_title">Tag Clouds</h4>
             <ul class="list">
@@ -426,42 +433,42 @@
                 </li>
             </ul>
         </aside> --}}
-        {{-- <aside class="single_sidebar_widget instagram_feeds">
+    {{-- <aside class="single_sidebar_widget instagram_feeds">
                         <h4 class="widget_title">Instagram Feeds</h4>
                         <ul class="instagram_row flex-wrap">
                             <li>
                                 <a href="#">
                                     <img class="img-fluid" src="{{asset('img/post/post_5.png')}}" alt="">
+    </a>
+    </li>
+    <li>
+        <a href="#">
+            <img class="img-fluid" src="{{asset('img/post/post_6.png')}}" alt="">
         </a>
-        </li>
-        <li>
-            <a href="#">
-                <img class="img-fluid" src="{{asset('img/post/post_6.png')}}" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img class="img-fluid" src="{{asset('img/post/post_7.png')}}" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img class="img-fluid" src="{{asset('img/post/post_8.png')}}" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img class="img-fluid" src="{{asset('img/post/post_9.png')}}" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img class="img-fluid" src="{{asset('img/post/post_10.png')}}" alt="">
-            </a>
-        </li>
-        </ul>
-        </aside> --}}
-        {{-- <aside class="single_sidebar_widget newsletter_widget">
+    </li>
+    <li>
+        <a href="#">
+            <img class="img-fluid" src="{{asset('img/post/post_7.png')}}" alt="">
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <img class="img-fluid" src="{{asset('img/post/post_8.png')}}" alt="">
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <img class="img-fluid" src="{{asset('img/post/post_9.png')}}" alt="">
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <img class="img-fluid" src="{{asset('img/post/post_10.png')}}" alt="">
+        </a>
+    </li>
+    </ul>
+    </aside> --}}
+    {{-- <aside class="single_sidebar_widget newsletter_widget">
                         <h4 class="widget_title">Newsletter</h4>
                         <form action="#">
                             <div class="form-group">

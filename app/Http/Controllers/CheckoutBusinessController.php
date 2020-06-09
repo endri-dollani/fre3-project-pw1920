@@ -160,9 +160,8 @@ public function reservated(Request $request){
                 'description' =>  'Reservation payed',
                 'receipt_email' => $request->email,
                 'metadata' => [
-                    'data1' => 'metadata 1',
-                    'data2' => 'metadata 3',
-                    'data3' => 'metadata 3',
+                    'Name' => $request->input('name'),
+                    'Email' => $request->input('email')
     
                 ],
     
@@ -174,7 +173,7 @@ public function reservated(Request $request){
         // $user->business_number = $request->input('phone-number');
 
         // $user->save();
-        return redirect('/posts')->with('success','Thank you , your reservation payment has been accepted.' );
+        return redirect('/posts')->with('success','Thank you , your reservation payment has been accepted '.$user->name.'.' );
     } catch (CardErrorException $e) {
         //throw $e
        return redirect('/posts')->with('error', $e->getMessage());

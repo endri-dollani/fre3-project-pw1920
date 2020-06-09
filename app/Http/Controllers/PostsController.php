@@ -17,7 +17,7 @@ class PostsController extends Controller
     {   
         //Kjo ndalon vezhgimin e posteve pa u loguar me pare.
         // Brenda [] vendosen faqet qe do shfaqen dhe pse useri nuk eshte loguar ose regjistruar:
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     } 
 
     /**
@@ -221,5 +221,21 @@ class PostsController extends Controller
         return redirect('/posts')->with('success', 'Post Removed');
     }
 
-   
+   public function search(Request $request){
+
+        $request->validate([
+            'query'=> 'required|min:3',
+        ]);
+        $query = $request->input('query');
+
+        $posts = Post::where('title', 'LIKE', '%'.$query.'%')
+                        ->orWhere('cover_image', 'LIKE', '%'.$query.'%')
+                        ->orWhere('body', 'LIKE', '%'.$query.'%')
+                        ->orWhere('checkin_date', 'LIKE', '%'.$query.'%')
+                        ->orWhere('checkout_date', 'LIKE', '%'.$query.'%')
+                        ->orWhere('checkout_date', 'LIKE', '%'.$query.'%')
+                        ->get();
+
+        return view('/posts/search-results')->with('posts',$posts);
+   }
 }

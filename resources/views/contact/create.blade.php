@@ -73,7 +73,7 @@
                 <h2 class="contact-title">Contact us</h2>
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+                <form class="form-contact contact_form" action="/contact" method="POST" id="contactForm"
                     novalidate="novalidate">
                     <div class="row">
                         <div class="col-12">
@@ -105,6 +105,7 @@
                             </div>
                         </div>
                     </div>
+                    @csrf
                     <div class="form-group mt-3">
                         <button type="submit" class="button button-contactForm boxed-btn">Send</button>
                     </div>

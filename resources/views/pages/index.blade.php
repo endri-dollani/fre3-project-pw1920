@@ -28,147 +28,148 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     <!-- slider Area End-->
 
     <!-- Booking Room Start-->
-    <div class="booking-area">
+    {{-- <div class="booking-area">
         <div class="container">
             <div class="row ">
-                <div class="col-12">
-                    <form action="{{route('home.store')}}" method="POST" >
-                        {{csrf_field()}}
-                        <div class="booking-wrap d-flex justify-content-between align-items-center">
+                <div class="col-12"> --}}
+    {{-- <form action="{{route('home.store')}}" method="POST" >
+    {{csrf_field()}}
+    <div class="booking-wrap d-flex justify-content-between align-items-center">
 
-                            <!-- select in date -->
-                            <div class="single-select-box mb-30">
-                                <!-- select out date -->
-                                <div class="boking-tittle">
-                                    <span> Check In Date:</span>
-                                </div>
-                                <div class="boking-datepicker">
-                                    <input name="datepicker1" id="datepicker1" placeholder="10/12/2020" />
-                                </div>
-                            </div>
-                            <!-- Single Select Box -->
-                            <div class="single-select-box mb-30">
-                                <!-- select out date -->
-                                <div class="boking-tittle">
-                                    <span>Check OutDate:</span>
-                                </div>
-                                <div class="boking-datepicker">
-                                    <input name="datepicker2" id="datepicker2" placeholder="12/12/2020" />
-                                </div>
-                            </div>
-                            <!-- Single Select Box -->
-                            <div class="single-select-box mb-30">
-                                <div class="boking-tittle">
-                                    <span>Adults:</span>
-                                </div>
-                                <div class="select-this">
-                                    
-                                        <div class="select-itms">
-                                            <select name="select1" id="select1">
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                        </div>
-                                  
-                                </div>
-                            </div>
-                            <!-- Single Select Box -->
-                            <div class="single-select-box mb-30">
-                                <div class="boking-tittle">
-                                    <span>Children:</span>
-                                </div>
-                                <div class="select-this">
-                                 
-                                        <div class="select-itms">
-                                            <select name="select2" id="select2">
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                        </div>
-                                  
-                                </div>
-                            </div>
-                            <!-- Single Select Box -->
-                            <div class="single-select-box mb-30">
-                                <div class="boking-tittle">
-                                    <span>Rooms:</span>
-                                </div>
-                                <div class="select-this">
-                                
-                                        <div class="select-itms">
-                                            <select name="select3" id="select3">
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                        </div>
-                               
-                                </div>
-                            </div>
-                            <!-- Single Select Box -->
-                            <div class="single-select-box pt-45 mb-30">
-                                <button type="submit"  class="btn select-btn">Search</button>
-                               {{-- <input type="submit" class="btn select-btn" > --}}
-                            </div>
+        <!-- select in date -->
+        <div class="single-select-box mb-30">
+            <!-- select out date -->
+            <div class="boking-tittle">
+                <span> Check In Date:</span>
+            </div>
+            <div class="boking-datepicker">
+                <input name="datepicker1" id="datepicker1" placeholder="10/12/2020" />
+            </div>
+        </div>
+        <!-- Single Select Box -->
+        <div class="single-select-box mb-30">
+            <!-- select out date -->
+            <div class="boking-tittle">
+                <span>Check OutDate:</span>
+            </div>
+            <div class="boking-datepicker">
+                <input name="datepicker2" id="datepicker2" placeholder="12/12/2020" />
+            </div>
+        </div>
+        <!-- Single Select Box -->
+        <div class="single-select-box mb-30">
+            <div class="boking-tittle">
+                <span>Adults:</span>
+            </div>
+            <div class="select-this">
+
+                <div class="select-itms">
+                    <select name="select1" id="select1">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <!-- Single Select Box -->
+        <div class="single-select-box mb-30">
+            <div class="boking-tittle">
+                <span>Children:</span>
+            </div>
+            <div class="select-this">
+
+                <div class="select-itms">
+                    <select name="select2" id="select2">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <!-- Single Select Box -->
+        <div class="single-select-box mb-30">
+            <div class="boking-tittle">
+                <span>Rooms:</span>
+            </div>
+            <div class="select-this">
+
+                <div class="select-itms">
+                    <select name="select3" id="select3">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <!-- Single Select Box -->
+        <div class="single-select-box pt-45 mb-30">
+            <button type="submit" class="btn select-btn">Search</button>
+            {{-- <input type="submit" class="btn select-btn" > --}}
+            {{-- </div>
 
 
                         </div>
-                    </form>
-                </div>
+                    </form> --}}
+            {{-- </div>
             </div>
         </div>
-    </div>
-    <!-- Booking Room End-->
+    </div> --}}
+            <!-- Booking Room End-->
 
-     <!-- Make customer Start-->
-     <section class="make-customer-area customar-padding fix">
-        <div class="container-fluid p-0">
-            <div class="row">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="customer-img mb-120">
-                        <img src="{{asset('img/hero/bussines_cover.jpg')}}" class="customar-img1" alt="">
-                        <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
-                        {{-- <div class="service-experience heartbeat">
+            <!-- Make customer Start-->
+            <section class="make-customer-area customar-padding fix">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="customer-img mb-120">
+                                <img src="{{asset('img/hero/bussines_cover.jpg')}}" class="customar-img1" alt="">
+                                <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
+                                {{-- <div class="service-experience heartbeat">
                             <h3>68 Years of Service<br>Experience</h3>
                         </div> --}}
-                    </div>
-                </div>
-                <div class=" col-xl-4 col-lg-4">
-                    <div class="customer-caption">
-                        <span>About our company</span>
-                        <h2>Customer is the hero of our story</h2>
-                        <div class="caption-details">
-                            <p class="pera-dtails">Our goal is to create an platform that will help tourists from 
-                                all around the world to find their dream vacation destination.  </p>
-                            <p> By using our website you can : <br>
-                               * Find the most beautiful spots. <br>
-                               * Reservate online in a secure way. <br>
-                               * Marketing boost for bussines. <br>
-                               * Helpful reviews.</p>
-                          
+                            </div>
+                        </div>
+                        <div class=" col-xl-4 col-lg-4">
+                            <div class="customer-caption">
+                                <span>About our company</span>
+                                <h2>Customer is the hero of our story</h2>
+                                <div class="caption-details">
+                                    <p class="pera-dtails">Our goal is to create an platform that will help tourists
+                                        from
+                                        all around the world to find their dream vacation destination. </p>
+                                    <p> By using our website you can : <br>
+                                        * Find the most beautiful spots. <br>
+                                        * Reservate online in a secure way. <br>
+                                        * Marketing boost for bussines. <br>
+                                        * Helpful reviews.</p>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Make customer End-->
+            </section>
+            <!-- Make customer End-->
 
-    {{-- <!-- Room Start -->
+            {{-- <!-- Room Start -->
     <section class="room-area">
         <div class="container">
             <div class="row justify-content-center">
@@ -188,111 +189,111 @@
                     <div class="single-room mb-50">
                         <div class="room-img">
                             <a href="rooms.html"><img src="{{asset('img/rooms/room1.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="room-caption">
-                            <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                            <div class="per-night">
-                                <span><u>$</u>150 <span>/ par night</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!-- Single Room -->
-                    <div class="single-room mb-50">
-                        <div class="room-img">
-                            <a href="rooms.html"><img src="{{asset('img/rooms/room2.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="room-caption">
-                            <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                            <div class="per-night">
-                                <span><u>$</u>150 <span>/ par night</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!-- Single Room -->
-                    <div class="single-room mb-50">
-                        <div class="room-img">
-                            <a href="rooms.html"> <img src="{{asset('img/rooms/room3.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="room-caption">
-                            <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                            <div class="per-night">
-                                <span><u>$</u>150 <span>/ par night</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!-- Single Room -->
-                    <div class="single-room mb-50">
-                        <div class="room-img">
-                            <a href="rooms.html"><img src="{{asset('img/rooms/room4.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="room-caption">
-                            <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                            <div class="per-night">
-                                <span><u>$</u>150 <span>/ par night</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!-- Single Room -->
-                    <div class="single-room mb-50">
-                        <div class="room-img">
-                            <a href="rooms.html"><img src="{{asset('img/rooms/room5.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="room-caption">
-                            <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                            <div class="per-night">
-                                <span><u>$</u>150 <span>/ par night</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <!-- Single Room -->
-                    <div class="single-room mb-50">
-                        <div class="room-img">
-                            <a href="rooms.html"> <img src="{{asset('img/rooms/room6.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="room-caption">
-                            <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                            <div class="per-night">
-                                <span><u>$</u>150 <span>/ par night</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="room-caption">
+            <h3><a href="rooms.html">Classic Double Bed</a></h3>
+            <div class="per-night">
+                <span><u>$</u>150 <span>/ par night</span></span>
             </div>
-            <div class="row justify-content-center">
-                <div class="room-btn pt-70">
-                    <a href="#" class="btn view-btn1">View more <i class="ti-angle-right"></i> </a>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6">
+        <!-- Single Room -->
+        <div class="single-room mb-50">
+            <div class="room-img">
+                <a href="rooms.html"><img src="{{asset('img/rooms/room2.jpg')}}" alt=""></a>
+            </div>
+            <div class="room-caption">
+                <h3><a href="rooms.html">Classic Double Bed</a></h3>
+                <div class="per-night">
+                    <span><u>$</u>150 <span>/ par night</span></span>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6">
+        <!-- Single Room -->
+        <div class="single-room mb-50">
+            <div class="room-img">
+                <a href="rooms.html"> <img src="{{asset('img/rooms/room3.jpg')}}" alt=""></a>
+            </div>
+            <div class="room-caption">
+                <h3><a href="rooms.html">Classic Double Bed</a></h3>
+                <div class="per-night">
+                    <span><u>$</u>150 <span>/ par night</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6">
+        <!-- Single Room -->
+        <div class="single-room mb-50">
+            <div class="room-img">
+                <a href="rooms.html"><img src="{{asset('img/rooms/room4.jpg')}}" alt=""></a>
+            </div>
+            <div class="room-caption">
+                <h3><a href="rooms.html">Classic Double Bed</a></h3>
+                <div class="per-night">
+                    <span><u>$</u>150 <span>/ par night</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6">
+        <!-- Single Room -->
+        <div class="single-room mb-50">
+            <div class="room-img">
+                <a href="rooms.html"><img src="{{asset('img/rooms/room5.jpg')}}" alt=""></a>
+            </div>
+            <div class="room-caption">
+                <h3><a href="rooms.html">Classic Double Bed</a></h3>
+                <div class="per-night">
+                    <span><u>$</u>150 <span>/ par night</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6">
+        <!-- Single Room -->
+        <div class="single-room mb-50">
+            <div class="room-img">
+                <a href="rooms.html"> <img src="{{asset('img/rooms/room6.jpg')}}" alt=""></a>
+            </div>
+            <div class="room-caption">
+                <h3><a href="rooms.html">Classic Double Bed</a></h3>
+                <div class="per-night">
+                    <span><u>$</u>150 <span>/ par night</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="room-btn pt-70">
+            <a href="#" class="btn view-btn1">View more <i class="ti-angle-right"></i> </a>
+        </div>
+    </div>
+    </div>
 
     </section>
     <!-- Room End --> --}}
 
-     <!-- Dining Start -->
-     <div class="dining-area dining-padding-top">
+    <!-- Dining Start -->
+    <div class="dining-area dining-padding-top">
         <!-- Single Left img -->
         <div class="single-dining-area ">
 
             <div class="container">
                 <div class="row justify-content-end">
-            <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
+                    <img src="{{asset('img/customer/customar2.png')}}" class="customar-img2" alt="">
 
                     <div class="col-lg-8 col-md-8">
                         <div class="dining-caption">
                             <span>Grow as a bussines</span>
                             <h3>Create offers and make your customers happy!</h3>
-                            <p>By using our website you can promote your tourism business by <br> 
-                                creating reservation tables for customers. <br> 
+                            <p>By using our website you can promote your tourism business by <br>
+                                creating reservation tables for customers. <br>
                             </p>
                         </div>
                     </div>
@@ -308,10 +309,11 @@
                             <span>Our Services</span>
                             <h3>What we offer.</h3>
                             <p>
-                                By using this website you have acces to <br> post and create reservation tables, for your customers. <br>
+                                By using this website you have acces to <br> post and create reservation tables, for
+                                your customers. <br>
                                 Transactions are made online and are secure. <br>
                             </p>
-                          
+
                         </div>
 
                     </div>
@@ -323,8 +325,8 @@
     </div>
     <!-- Dining End -->
 
-     <!-- Testimonial Start -->
-     <div class="testimonial-area t-padding">
+    <!-- Testimonial Start -->
+    <div class="testimonial-area t-padding">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-9 col-lg-9 col-md-9">
@@ -334,7 +336,8 @@
                             <!-- Testimonial tittle -->
                             <div class="font-back-tittle mb-105">
                                 <div class="archivment-front">
-                                    <img src="{{asset('img/team/Endri.jpg')}}" style="width:100px; height: 100px; border-radius: 50%;" alt="">
+                                    <img src="{{asset('img/team/Endri.jpg')}}"
+                                        style="width:100px; height: 100px; border-radius: 50%;" alt="">
                                 </div>
                                 <h3 class="archivment-back">Developers</h3>
                             </div>
@@ -362,7 +365,8 @@
                             <!-- Testimonial tittle -->
                             <div class="font-back-tittle mb-105">
                                 <div class="archivment-front">
-                                    <img src="{{asset('img/team/Dea.png')}}" style="width:100px; height: 100px; border-radius: 50%;" alt="">
+                                    <img src="{{asset('img/team/Dea.png')}}"
+                                        style="width:100px; height: 100px; border-radius: 50%;" alt="">
                                 </div>
                                 <h3 class="archivment-back">Developers</h3>
                             </div>
@@ -385,12 +389,13 @@
                                 </div>
                             </div>
                         </div>
-                         <!-- Single Testimonial -->
-                         <div class="single-testimonial  pt-65">
+                        <!-- Single Testimonial -->
+                        <div class="single-testimonial  pt-65">
                             <!-- Testimonial tittle -->
                             <div class="font-back-tittle mb-105">
                                 <div class="archivment-front">
-                                    <img src="{{asset('img/team/Eniani.png')}}" style="width:100px; height: 100px; border-radius: 50%;" alt="">
+                                    <img src="{{asset('img/team/Eniani.png')}}"
+                                        style="width:100px; height: 100px; border-radius: 50%;" alt="">
                                 </div>
                                 <h3 class="archivment-back">Developers</h3>
                             </div>
@@ -440,78 +445,78 @@
                     <div class="single-blog mb-30">
                         <div class="blog-img">
                             <a href="single-blog.html"><img src="{{asset('img/our_blog/blog-img1.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="blog-caption">
-                            <div class="blog-cap-top d-flex justify-content-between mb-40">
-                                <span>news</span>
-                                <ul>
-                                    <li>by<a href="#"> Jhon Guru</a></li>
-                                </ul>
-                            </div>
-                            <div class="blog-cap-mid">
-                                <p><a href="single-blog.html">5 Simple Tricks for Getting Stellar Hotel Service Wherever
-                                        You Are</a></p>
-                            </div>
-                            <!-- Comments -->
-                            <div class="blog-cap-bottom d-flex justify-content-between">
-                                <span>Feb 28, 2020</span>
-                                <span><img src="{{asset('img/our_blog/blog-comments-icon.jpg')}}" alt="">3</span>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+    <div class="blog-caption">
+        <div class="blog-cap-top d-flex justify-content-between mb-40">
+            <span>news</span>
+            <ul>
+                <li>by<a href="#"> Jhon Guru</a></li>
+            </ul>
+        </div>
+        <div class="blog-cap-mid">
+            <p><a href="single-blog.html">5 Simple Tricks for Getting Stellar Hotel Service Wherever
+                    You Are</a></p>
+        </div>
+        <!-- Comments -->
+        <div class="blog-cap-bottom d-flex justify-content-between">
+            <span>Feb 28, 2020</span>
+            <span><img src="{{asset('img/our_blog/blog-comments-icon.jpg')}}" alt="">3</span>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-6">
+        <!-- Single Blog -->
+        <div class="single-blog mb-30">
+            <div class="blog-img">
+                <a href="single-blog.html"> <img src="{{asset('img/our_blog/blog-img2.jpg')}}" alt=""></a>
+            </div>
+            <div class="blog-caption">
+                <div class="blog-cap-top d-flex justify-content-between mb-40">
+                    <span>news</span>
+                    <ul>
+                        <li>by<a href="#"> Jhon Guru</a></li>
+                    </ul>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <!-- Single Blog -->
-                    <div class="single-blog mb-30">
-                        <div class="blog-img">
-                            <a href="single-blog.html"> <img src="{{asset('img/our_blog/blog-img2.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="blog-caption">
-                            <div class="blog-cap-top d-flex justify-content-between mb-40">
-                                <span>news</span>
-                                <ul>
-                                    <li>by<a href="#"> Jhon Guru</a></li>
-                                </ul>
-                            </div>
-                            <div class="blog-cap-mid">
-                                <p><a href="single-blog.html">5 Simple Tricks for Getting Stellar Hotel Service Wherever
-                                        You Are</a></p>
-                            </div>
-                            <!-- Comments -->
-                            <div class="blog-cap-bottom d-flex justify-content-between">
-                                <span>Feb 28, 2020</span>
-                                <span><img src="{{asset('img/our_blog/blog-comments-icon.jpg')}}" alt="">3</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="blog-cap-mid">
+                    <p><a href="single-blog.html">5 Simple Tricks for Getting Stellar Hotel Service Wherever
+                            You Are</a></p>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <!-- Single Blog -->
-                    <div class="single-blog mb-30">
-                        <div class="blog-img">
-                            <a href="single-blog.html"><img src="{{asset('img/our_blog/blog-img3.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="blog-caption">
-                            <div class="blog-cap-top d-flex justify-content-between mb-40">
-                                <span>news</span>
-                                <ul>
-                                    <li>by<a href="#"> Jhon Guru</a></li>
-                                </ul>
-                            </div>
-                            <div class="blog-cap-mid">
-                                <p><a href="single-blog.html">5 Simple Tricks for Getting Stellar Hotel Service Wherever
-                                        You Are</a></p>
-                            </div>
-                            <!-- Comments -->
-                            <div class="blog-cap-bottom d-flex justify-content-between">
-                                <span>Feb 28, 2020</span>
-                                <span><img src="{{asset('img/our_blog/blog-comments-icon.jpg')}}" alt="">3</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Comments -->
+                <div class="blog-cap-bottom d-flex justify-content-between">
+                    <span>Feb 28, 2020</span>
+                    <span><img src="{{asset('img/our_blog/blog-comments-icon.jpg')}}" alt="">3</span>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-6">
+        <!-- Single Blog -->
+        <div class="single-blog mb-30">
+            <div class="blog-img">
+                <a href="single-blog.html"><img src="{{asset('img/our_blog/blog-img3.jpg')}}" alt=""></a>
+            </div>
+            <div class="blog-caption">
+                <div class="blog-cap-top d-flex justify-content-between mb-40">
+                    <span>news</span>
+                    <ul>
+                        <li>by<a href="#"> Jhon Guru</a></li>
+                    </ul>
+                </div>
+                <div class="blog-cap-mid">
+                    <p><a href="single-blog.html">5 Simple Tricks for Getting Stellar Hotel Service Wherever
+                            You Are</a></p>
+                </div>
+                <!-- Comments -->
+                <div class="blog-cap-bottom d-flex justify-content-between">
+                    <span>Feb 28, 2020</span>
+                    <span><img src="{{asset('img/our_blog/blog-comments-icon.jpg')}}" alt="">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
     </div>
     <!-- Blog End -->
 
@@ -543,23 +548,28 @@
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                   <div class="single-footer-caption mb-30">
-                      <!-- logo -->
-                      <div class="footer-logo">
-                        <a href="/"><img src="{{asset('img/logo/logo2_footer.svg')}}" alt=""></a>
-                      </div>
-                      <div class="footer-social footer-social2">
-                          <a href="#"><i class="fab fa-facebook-f"></i></a>
-                          <a href="#"><i class="fab fa-twitter"></i></a>
-                          <a href="#"><i class="fas fa-globe"></i></a>
-                          <a href="#"><i class="fab fa-behance"></i></a>
-                      </div>
-                      <div class="footer-pera">
-                           <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="#">FRE3</a>
- <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                      </div>
-                   </div>
+                    <div class="single-footer-caption mb-30">
+                        <!-- logo -->
+                        <div class="footer-logo">
+                            <a href="/"><img src="{{asset('img/logo/logo2_footer.svg')}}" alt=""></a>
+                        </div>
+                        <div class="footer-social footer-social2">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-globe"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                        </div>
+                        <div class="footer-pera">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved | This website is made with <i class="ti-heart"
+                                    aria-hidden="true"></i> by <a href="#">FRE3</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
                     <div class="single-footer-caption mb-30">
@@ -577,12 +587,12 @@
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                     <div class="single-footer-caption mb-30">
                         <div class="footer-tittle">
-                             <h4>Contact</h4>
-                             <ul>
-                                 <li><a href="#">Tel: 04 255 6987</a></li>
-                                 <li><a href="#">Skype: TouristCheckpoint</a></li>
-                                 <li><a href="#">contact@touristcheckpoint.com</a></li>
-                             </ul>
+                            <h4>Contact</h4>
+                            <ul>
+                                <li><a href="#">Tel: 04 255 6987</a></li>
+                                <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                <li><a href="#">contact@touristcheckpoint.com</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -605,21 +615,22 @@
                                          onblur="this.placeholder = ' Email Address '">
                                          <div class="form-icon">
                                            <button type="submit" name="submit" id="newsletter-submit"
-                                           class="email_icon newsletter-submit button-contactForm"><img src="{{asset('img/logo/form-iocn.jpg')}}" alt=""></button>
-                                         </div>
-                                         <div class="mt-10 info"></div>
-                                     </form>
-                                 </div>
-                             </div> --}}
+                                           class="email_icon newsletter-submit button-contactForm"><img src="{{asset('img/logo/form-iocn.jpg')}}"
+                            alt=""></button>
                         </div>
+                        <div class="mt-10 info"></div>
+                        </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
+    </div>
+    </div>
+    </div>
     <!-- Footer End-->
- </footer>
- 
+</footer>
+
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->

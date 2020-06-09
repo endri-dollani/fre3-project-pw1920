@@ -117,13 +117,40 @@
                                     <a href="/posts/{{$post->id}}">
                                         <h2>{{$post->title}}</h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
-                                    <ul class="blog-info-link">
+                                    <p>{{$post->body}}</p>
+
+                                    @if ($post->user->is_business == 1)
+                                    <div class="col-xl-8 pt-4 col-lg-8 col-md-8">
+                                 <!-- Reservation Details -->
+                                 <div class="single-room mb-50 ">
+                                     <div class="room-caption">
+                                         @if (Auth::user()->id == $post->user_id)
+                                          <h3 class="contact-title" style="color: #dca73a !important;">Reservate Now</h3> 
+                                         @endif
+                                         <div>
+                                             <span>Checkin date:</span>
+                                             <h5> {{$post->checkin_date}}</h5>
+                                            <span>Checkout date:</span> 
+                                             <h5> {{$post->checkout_date}}</h5>
+                                         </div>
+                                         <span>Our {{$post->rooms}} room('s) can accommodate:</span>
+                                         <div class="pt-2">
+                                             <h5>{{$post->adults}} Adult('s) and {{$post->kids}} Children('s) </h5>
+                                         </div>
+                                         <span>Price:</span>
+                                         <div class="per-night">
+                                             <span><u>$</u>{{$post->price}} <span>/ per night</span></span>
+                                         </div>
+                                        
+                                     </div>
+                                 </div>
+                             </div> 
+                             @endif
+                                    {{-- <ul class="blog-info-link">
                                         <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                         <li><small>Written on {{$post->created_at}} by {{$post->user->name}}</small></li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                                 <a href="/posts/{{$post->id}}/edit" class="genric-btn info mt-3">Edit</a>
                                 {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST',

@@ -77,8 +77,13 @@
 
                                     @else
 
-                                    <img src="/storage/profile_pics/{{$post->user->profile_pic}}"
-                                        style="width: 50px; height: 50px; border-radius: 50%;" class="mr-4 mb-3" alt="">
+                                     @if ($post->user->profile_pic == null)
+                                        <img src="/storage/profile_pics/noprofilepic.jpg" class="mr-4 mb-3"
+                                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                                        @else
+                                        <img src="/storage/profile_pics/{{$post->user->profile_pic}}" class="mr-4 mb-3"
+                                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                                        @endif
                                     <div class="media-body">
                                         <h4>{{$post->user->name}}
                                             @if ($post->user->is_business == 1)
@@ -91,12 +96,7 @@
                                     @endif
                                     @else
 
-                                    @if ($post->user->profile_pic == null)
-                                    <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                                   @else 
-                                   <img src="/storage/profile_pics/{{$post->user->profile_pic}}" style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                   
-                                   @endif
+                                    
                                     <img src="/storage/profile_pics/{{$post->user->profile_pic}}" class="mr-4 mb-3"
                                         style="width: 50px; height: 50px; border-radius: 50%;" alt="">
                                     <div class="media-body">
@@ -124,11 +124,11 @@
                                 </div>
 
 
-                                <ul class="blog-info-link">
+                                {{-- <ul class="blog-info-link">
                                     <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
                                     <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     <li><small>Written on {{$post->created_at}} by {{$post->user->name}}</small></li>
-                                </ul>
+                                </ul> --}}
 
                             </div>
 
@@ -149,14 +149,11 @@
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
-                        <form action="#">
+                        <form action="{{route('search')}}" method="GET">
                             <div class="form-group">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder='Search Keyword'
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                                    <div class="input-group-append">
-                                        <button class="btn" type="button"><i class="ti-search"></i></button>
-                                    </div>
+                                    <input type="text" class="form-control" name="query" id="query"
+                                        value="{{request()->input('query')}}" placeholder='Search Keyword'>
                                 </div>
                             </div>
                             <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
@@ -165,7 +162,7 @@
                     </aside>
 
 
-                    <aside class="single_sidebar_widget popular_post_widget">
+                    {{-- <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Recent Post</h3>
                         <div class="media post_item">
                             <img src="{{asset('img/post/post_1.png')}}" alt="post">
@@ -206,7 +203,7 @@
                                 <a href="#">illustration</a>
                             </li>
                         </ul>
-                    </aside>
+                    </aside> --}}
                 </div>
             </div>
         </div>

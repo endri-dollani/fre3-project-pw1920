@@ -2,112 +2,101 @@
 
 @section('content')
 
-<section class="contact-section">
+<section class="blog_area section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h4 class="contact-title pb-4">Reservation Details</h4>
-            </div>
-            <div class="col-lg-8">
-                <form class="form-contact contact_form " action="{{route('post.reservated')}}" method="POST" id="payment-form">
-                    {{csrf_field()}}
-                    <div class="row">
-                        <div class="col-12">
-                            <h4>Name</h4>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <input class="form-control" name="name" id="name" type="text"
-                                 
-                                    placeholder="Enter your name" required>
-                            </div>
-                        </div>
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
 
-                        <div class="col-12">
-                            <h4>Email</h4>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <input class="form-control" name="email" id="email" type="text"
-                                    placeholder="Enter email address" required>
-                            </div>
-                        </div>
+                    <article class="blog_item">
                         
-                        {{-- <div class="col-sm-6">
-                            <div class="col-12">
-                                <h4>Province</h4>
+                        <h1>Search Results</h1>
+                        <p>{{$posts->count()}} result(s) for '{{request()->input('query')}}'</p>
+
+                        @foreach ($posts as $post)
+                            <div>
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>Cover Image</th>
+                                        <th>Post Title</th>
+                                        <th>Post Description</th>
+                                        <th>Checkin date</th>
+                                        <th>Checkout date</th>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/posts/{{$post->id}}"><img src="/storage/cover_images/{{$post->cover_image}}" class="mr-4 mb-3"
+                                            style="width: 100px; height: 100px;" alt=""></a></td>
+                                        <td>{{$post->title}}</td>
+                                        <td>{{$post->body}}</td>
+                                        <td>{{$post->checkin_date}}</td>
+                                        <td>{{$post->checkout_date}}</td>
+                                    </tr>
+                                </table>
+
                             </div>
-                            <div class="form-group">
-                                <input class="form-control valid" name="province" id="text" type="province"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter province name'"
-                                    placeholder="Enter province name">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="col-12">
-                                <h4>Postal Code</h4>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control valid" name="postal-code" id="postal-code" type="text"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter postal code'"
-                                    placeholder="Enter postal code">
-                            </div>
-                        </div> --}}
-                     
-
-                    </div>
-
-                    <div class="col-12">
-                        <h4 class="contact-title pt-4 pb-4">Payment Details</h4>
-                        <div class="form-group StripeElement">
-                      
-                            
-                            <div id="card-element">
-                                <!-- A Stripe Element will be inserted here. -->
-                            </div>
-
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                      
-
-                         </div>
-                    </div>
+                        @endforeach
+                    </article>
 
 
-                    <div class="form-group mt-3 pt-5">
-                        <button type="submit" class="button button-contactForm boxed-btn">Subscribe</button>
-                    </div>
-                </form>
+                    <nav class="blog-pagination justify-content-center d-flex">
+                    </nav>
+                </div>
             </div>
-            {{-- <div class="col-lg-3 offset-lg-1">
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-home"></i></span>
-                    <div class="media-body">
-                        <h3>Faculty of Natural Sciences.</h3>
-                        <p>Bulevardi Zogu I, Tiranë</p>
-                    </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="{{route('search')}}" method="GET">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="query" id="query"
+                                        value="{{request()->input('query')}}" placeholder='Search Keyword'>
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                type="submit">Search</button>
+                        </form>
+                    </aside>
+
+
+                    
+                    <aside class="single_sidebar_widget tag_cloud_widget">
+                        <h4 class="widget_title">Tag Clouds</h4>
+                        <ul class="list">
+                            <li>
+                                <a href="#">project</a>
+                            </li>
+                            <li>
+                                <a href="#">love</a>
+                            </li>
+                            <li>
+                                <a href="#">technology</a>
+                            </li>
+                            <li>
+                                <a href="#">travel</a>
+                            </li>
+                            <li>
+                                <a href="#">restaurant</a>
+                            </li>
+                            <li>
+                                <a href="#">life style</a>
+                            </li>
+                            <li>
+                                <a href="#">design</a>
+                            </li>
+                            <li>
+                                <a href="#">illustration</a>
+                            </li>
+                        </ul>
+                    </aside>
                 </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-                    <div class="media-body">
-                        <h3>Tel: 04 255 6987</h3>
-                        <p>Mon to Fri 9am to 6pm</p>
-                    </div>
-                </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-email"></i></span>
-                    <div class="media-body">
-                        <h3>contact@touristcheckpoint.com</h3>
-                        <p>Send us your query anytime!</p>
-                    </div>
-                </div>
-            </div> --}}
-           
+            </div>
         </div>
     </div>
 </section>
-<!-- ================ contact section end ================= -->
-
+<!--================Blog Area =================-->
 
 <footer>
     <!-- Footer Start-->
@@ -235,78 +224,4 @@
 <!-- Jquery Plugins, main Jquery -->
 <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-
-<script>
-    // Create a Stripe client.
-var stripe = Stripe('{{config('services.stripe.key')}}');
-
-// Create an instance of Elements.
-var elements = stripe.elements();
-
-// Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
-var style = {
-base: {
-    color: '#32325d',
-    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-    fontSmoothing: 'antialiased',
-    fontSize: '16px',
-    '::placeholder': {
-    color: '#aab7c4'
-    }
-},
-invalid: {
-    color: '#fa755a',
-    iconColor: '#fa755a'
-}
-};
-
-// Create an instance of the card Element.
-var card = elements.create('card', {style: style});
-
-// Add an instance of the card Element into the `card-element` <div>.
-card.mount('#card-element');
-
-// Handle real-time validation errors from the card Element.
-card.on('change', function(event) {
-var displayError = document.getElementById('card-errors');
-if (event.error) {
-    displayError.textContent = event.error.message;
-} else {
-    displayError.textContent = '';
-}
-});
-
-// Handle form submission.
-var form = document.getElementById('payment-form');
-form.addEventListener('submit', function(event) {
-event.preventDefault();
-
-stripe.createToken(card).then(function(result) {
-    if (result.error) {
-    // Inform the user if there was an error.
-    var errorElement = document.getElementById('card-errors');
-    errorElement.textContent = result.error.message;
-    } else {
-    // Send the token to your server.
-    stripeTokenHandler(result.token);
-    }
-});
-});
-
-// Submit the form with the token ID.
-function stripeTokenHandler(token) {
-// Insert the token ID into the form so it gets submitted to the server
-var form = document.getElementById('payment-form');
-var hiddenInput = document.createElement('input');
-hiddenInput.setAttribute('type', 'hidden');
-hiddenInput.setAttribute('name', 'stripeToken');
-hiddenInput.setAttribute('value', token.id);
-form.appendChild(hiddenInput);
-
-// Submit the form
-// alert(token.id);
-form.submit();
-}
-</script>
 @endsection
