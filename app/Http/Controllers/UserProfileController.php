@@ -92,7 +92,9 @@ class UserProfileController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'max:20'
+            'name' => 'min:5|max:20',
+            'user_bio' => 'nullable|max:200',
+            'profile_pic' => 'nullable|max:1999'
         ]);
 
          //Handle file upload: 

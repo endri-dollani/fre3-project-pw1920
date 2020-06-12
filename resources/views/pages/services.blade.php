@@ -2,15 +2,6 @@
 
 @section('content')
 
-{{-- <h1>{{$title}}</h1>
-
-@if (count($services) > 0)
-<ul class="list-group">
-    @foreach ($services as $service)
-    <li class="list-group-item">{{$service}}</li>
-    @endforeach
-</ul>
-@endif --}}
 
 <main>
 
@@ -75,96 +66,7 @@
         </div>
     </div>
 </div>
-<!-- Dining End -->
 
-    {{-- <!-- Testimonial Start -->
-    <div class="testimonial-area t-padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-9 col-lg-9 col-md-9">
-                    <div class="h1-testimonial-active">
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial pt-65">
-                            <!-- Testimonial tittle -->
-                            <div class="font-back-tittle mb-105">
-                                <div class="archivment-front">
-                                    <img src="{{asset('img/logo/testimonial.png')}}" alt="">
-                                </div>
-                                <h3 class="archivment-back">Testimonial</h3>
-                            </div>
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption text-center">
-                                <p>Yorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi.
-                                </p>
-                                <!-- Rattion -->
-                                <div class="testimonial-ratting">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="rattiong-caption">
-                                    <span>Clifford Frazier, <span>Regular Client</span> </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial  pt-65">
-                            <!-- Testimonial tittle -->
-                            <div class="font-back-tittle mb-105">
-                                <div class="archivment-front">
-                                    <img src="{{asset('img/logo/testimonial.png')}}" alt="">
-                                </div>
-                                <h3 class="archivment-back">Testimonial</h3>
-                            </div>
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption text-center">
-                                <p>Yorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi.
-                                </p>
-                                <div class="testimonial-ratting">
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                </div>
-                                <div class="rattiong-caption">
-                                    <span>Clifford Frazier, <span>Regular Client</span> </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-    <!-- Gallery img Start-->
-    <div class="gallery-area fix">
-        <div class="container-fluid p-0">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="gallery-active owl-carousel">
-                        <div class="gallery-img">
-                            <a href="#"><img src="{{asset('img/gallery/gallery1.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="gallery-img">
-                            <a href="#"><img src="{{asset('img/gallery/gallery2.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="gallery-img">
-                            <a href="#"><img src="{{asset('img/gallery/gallery3.jpg')}}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Gallery img End--> --}}
     <br> <br> <br> <br> <br>
 </main>
 <footer>
@@ -197,10 +99,8 @@
                             <div class="footer-tittle">
                                 <h4>Quick Links</h4>
                                 <ul>
-                                    <li><a href="#">About Tourist Checkpoint</a></li>
-                                    {{-- <li><a href="#">Our Best Rooms</a></li>
-                                    <li><a href="#">Our Photo Gellary</a></li>
-                                    <li><a href="#">Pool Service</a></li> --}}
+                                    <li><a href="/about">About Tourist Checkpoint</a></li>
+                                  
                                 </ul>
                             </div>
                         </div>
@@ -210,8 +110,8 @@
                             <div class="footer-tittle">
                                  <h4>Contact</h4>
                                  <ul>
-                                     <li><a href="#">Tel: 04 255 6987</a></li>
-                                     <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                     < <li><span style="font-weight: 10;">Tel: 04 255 6987</span></li>
+                                     <li><span style="font-weight: 10;">Skype: TouristCheckpoint</sapn></li>
                                      <li><a href="#">contact@touristcheckpoint.com</a></li>
                                  </ul>
                             </div>
@@ -225,23 +125,7 @@
                                     <li><a href="http://www.fshn.edu.al/">Faculty of Natural Sciences,</a></li>
                                     <li><a href="http://www.fshn.edu.al/">Bulevardi Zogu I, Tiranë</a></li>
                                 </ul>
-                                {{-- <!-- Form -->
-                                 <div class="footer-form" >
-                                     <span style="color: white;">Newsletter</span>
-                                     <div id="mc_embed_signup">
-                                         <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                         method="get" class="subscribe_form relative mail_part">
-                                             <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                             class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                             onblur="this.placeholder = ' Email Address '">
-                                             <div class="form-icon">
-                                               <button type="submit" name="submit" id="newsletter-submit"
-                                               class="email_icon newsletter-submit button-contactForm"><img src="{{asset('img/logo/form-iocn.jpg')}}" alt=""></button>
-                                             </div>
-                                             <div class="mt-10 info"></div>
-                                         </form>
-                                     </div>
-                                 </div> --}}
+                              
                             </div>
                         </div>
                     </div>

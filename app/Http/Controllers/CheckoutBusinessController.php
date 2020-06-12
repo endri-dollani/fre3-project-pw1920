@@ -7,6 +7,7 @@ use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 class CheckoutBusinessController extends Controller
 {
     public function __construct()
@@ -56,7 +57,8 @@ class CheckoutBusinessController extends Controller
         
         try {
             //code...
-            
+            $user_id = auth()->user()->id;
+            $user = User::find($user_id);
             
             $charge = Stripe::charges()->create([
                 'amount' => 199.99,
@@ -65,10 +67,7 @@ class CheckoutBusinessController extends Controller
                 'description' =>  'Business subscription payed',
                 'receipt_email' => $request->email,
                 'metadata' => [
-                    'data1' => 'metadata 1',
-                    'data2' => 'metadata 3',
-                    'data3' => 'metadata 3',
-    
+                    'data1' => 'User: '.$user->name.' upgraded to business successfully!'    
                 ],
     
             ]);
@@ -83,7 +82,7 @@ class CheckoutBusinessController extends Controller
             $user->business_number = $request->input('phone-number');
 
             $user->save();
-            return redirect('/checkout-business')->with('success','Thank you , your payment has been accepted.' );
+            return redirect('/dashboard')->with('success','Thank you , your payment has been accepted.' );
         } catch (CardErrorException $e) {
             //throw $e
            return redirect('/checkout-business')->with('error', $e->getMessage());
@@ -137,15 +136,22 @@ class CheckoutBusinessController extends Controller
     }
 
 
-    public function reservate(){
-        return view('posts.reservate');
-}
+    public function reservate($id){
+
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $post = Post::find($id);
+
+        if($user->is_business == 1){
+            return redirect('/dashboard');
+        }
+        return view('posts.reservate',compact('post','user'));
+    }
 
 public function reservated(Request $request){
     try {
         //code...
-        
-        
+       
      
         //Succes
           $user_id = auth()->user()->id;
@@ -154,7 +160,7 @@ public function reservated(Request $request){
             return redirect('/posts')->with('error','A business cant make a reservation.' );
         }
             $charge = Stripe::charges()->create([
-                'amount' => 199.99,
+                'amount' => $request->price,
                 'currency' => 'CAD',
                 'source' => $request->stripeToken,
                 'description' =>  'Reservation payed',

@@ -87,10 +87,10 @@ class BusinessController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:20',
-            'address' => 'required|max:20',
-            'city' => 'required|max:20',
-            'number' => 'required|max:15|min:8',
+            'name' => 'required|min:2|max:40',
+            'address' => 'required|min:3|max:50',
+            'city' => 'required|min:2|max:50',
+            'number' => 'required|min:8|max:15',
         ]);
 
         $user = User::find($id);

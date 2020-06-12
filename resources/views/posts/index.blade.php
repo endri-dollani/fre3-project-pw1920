@@ -1,139 +1,139 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <h1>Posts</h1>
-    @if (count($posts) > 0)
-        @foreach ($posts as $post)
-            <div class="well p-4">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                        <img src="/storage/cover_images/{{$post->cover_image}}" style="width: 100%;">
-</div>
-<div class="col-md-8 col-sm-8">
-    <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
-    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
-</div>
-</div>
-</div>
-@endforeach
-{{$posts->links()}}
-@else
-<p>No posts found</p>
-@endif --}}
 
 <!--================Blog Area =================-->
 <section class="blog_area section-padding">
     <div class="container">
         <div class="row">
+
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="blog_left_sidebar">
 
                     @if (count($posts) > 0)
                     @foreach ($posts as $post)
                     <article class="blog_item">
-                        <div class="blog_item_img">
+                        <div class="blog_item_img" style="text-align: center !important;">
                             <img src="/storage/cover_images/{{$post->cover_image}}" class=""
-                                style="width: 90%; height: 400px;" alt="">
-                            {{-- <a href="#" class="blog_item_date">
-                                    <h3>Reservate</h3>
-                                </a> --}}
+                                style="width: 100%; max-width:700px; max-height: 400px" alt="">
+                          
+                                @if ($post->user->is_business == 1 && $post->price != null)
+                                    <div class="blog_item_date" style="text-align: left !important;">
+                                
+                                    <a href="/reservate/{{$post->id}} class="btn btn-primary" style="color: white !important;">
+                                        Book Now
+                                    </a>
+                                    </div>
+                                  
+                            
+                                @endif
                         </div>
 
                         <div class="blog_details">
+
                             <a href="/posts/{{$post->id}}">
                                 <h2>{{$post->title}}</h2>
                             </a>
+
                             <p class="excert">
                                 {{$post->body}}
                             </p>
+
                             <div class="blog-author">
                                 <div class="media align-items-center">
                                     @if (!Auth::guest())
-                                    @if (Auth::user()->id == $post->user_id)
+                                        @if (Auth::user()->id == $post->user_id)
 
-                                    <a href="/dashboard">
-                                        @if ($post->user->profile_pic == null)
-                                        <img src="/storage/profile_pics/noprofilepic.jpg" class="mr-4 mb-3"
-                                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                                            <ul class="blog-info-link">
+                                               
+                                                <li>
+                                                    <i class="fas fa-user"></i>
+                                                    <a  href="/dashboard" class="ml-1"
+                                                        style="color: #222222 !important;">
+                                                        
+                                                        @if ($post->user->is_business == 1)
+                                                            {{$post->user->business_name}} 
+                                                            <i class="fas fa-check-circle ml-1" 
+                                                            style="color: green;">
+                                                            </i>
+                                                        @else
+                                                            {{$post->user->name}} 
+                                                        @endif
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <i class="far fa-clock"></i>
+                                                    
+                                                    <span class="ml-1">
+                                                        {{$post->created_at->format('m/d/Y')}}
+                                                    </span>
+                                                </li>
+                                             
+                                            </ul>
+
+
                                         @else
-                                        <img src="/storage/profile_pics/{{$post->user->profile_pic}}" class="mr-4 mb-3"
-                                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                                        @endif
-                                        <div class="media-body">
-                                            <a href="/dashboard">
-                                                <h4>{{$post->user->name}}
+                                            <ul class="blog-info-link">
+                                              
+                                                <li>
+                                                    <i class="fas fa-user"></i>
+                                                    
+                                                       
+                                                        
                                                     @if ($post->user->is_business == 1)
-                                                    <small class="ml-2 mr-4 mb-3" style="color:#30b330;"><i
-                                                            class="fas fa-check-circle"></i></small>
+                                                    {{$post->user->business_name}} 
+                                                        <i class="fas fa-check-circle ml-1" 
+                                                        style="color: green;">
+                                                        </i>
+                                                    @else
+                                                        {{$post->user->name}} 
                                                     @endif
-
-                                                </h4>
-                                            </a>
-                                            <p>{{$post->user->user_bio}}</p>
-                                        </div>
-
-                                    </a>
-
-
-                                    @else
-
-                                     @if ($post->user->profile_pic == null)
-                                        <img src="/storage/profile_pics/noprofilepic.jpg" class="mr-4 mb-3"
-                                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                                        @else
-                                        <img src="/storage/profile_pics/{{$post->user->profile_pic}}" class="mr-4 mb-3"
-                                            style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                                                    
+                                                </li>
+                                                <li>
+                                                    <i class="far fa-clock"></i>
+                                                    
+                                                    <span class="ml-1">
+                                                        {{$post->created_at->format('m/d/Y')}}
+                                                    </span>
+                                                </li>
+                                             
+                                            </ul>
                                         @endif
-                                    <div class="media-body">
-                                        <h4>{{$post->user->name}}
-                                            @if ($post->user->is_business == 1)
-                                            <small class="ml-2" style="color:#30b330;"><i
-                                                    class="fas fa-check-circle"></i></small>
-                                            @endif
-                                        </h4>
-                                        <p>{{$post->user->user_bio}}</p>
-                                    </div>
-                                    @endif
                                     @else
-
-                                    
-                                    <img src="/storage/profile_pics/{{$post->user->profile_pic}}" class="mr-4 mb-3"
-                                        style="width: 50px; height: 50px; border-radius: 50%;" alt="">
-                                    <div class="media-body">
-                                        <h4>{{$post->user->name}}
-                                            @if ($post->user->is_business == 1)
-                                            <small class="ml-2" style="color:#30b330;"><i
-                                                    class="fas fa-check-circle"></i></small>
-                                            @endif
-                                        </h4>
-                                        <p>{{$post->user->user_bio}}</p>
-                                    </div>
-
-                                    @endif
-                                    {{-- <a href="/dashboard">
-                                        @if ($post->user->profile_pic == null)
+                                        <ul class="blog-info-link">
                                           
-                                             <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">  
-                                        @else
-                                                <img src="/storage/profile_pics/{{$post->user->profile_pic}}"
-                                    style="width: 50px; height: 50px; border-radius: 50%;" alt="">
+                                            <li>
+                                                <i class="fas fa-user"></i>
+                                                
+                                                   
+                                                    
+                                                @if ($post->user->is_business == 1)
+                                                    {{$post->user->business_name}} 
+                                                    <i class="fas fa-check-circle ml-1" 
+                                                    style="color: green;">
+                                                    </i>
+                                                @else
+                                                    {{$post->user->name}} 
+                                                @endif
+                                              
+                                            </li>
+                                            <li>
+                                                <i class="far fa-clock"></i>
+                                                
+                                                <span class="ml-1">
+                                                    {{$post->created_at->format('m/d/Y')}}
+                                                </span>
+                                            </li>
+                                        
+                                        </ul>
+
                                     @endif
-
-                                    </a> --}}
-
                                 </div>
-
-
-                                {{-- <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    <li><small>Written on {{$post->created_at}} by {{$post->user->name}}</small></li>
-                                </ul> --}}
-
                             </div>
-
-
+                        </div>
                     </article>
+
                     @endforeach
 
                     @else
@@ -146,6 +146,7 @@
                     </nav>
                 </div>
             </div>
+
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
@@ -161,49 +162,32 @@
                         </form>
                     </aside>
 
-
-                    {{-- <aside class="single_sidebar_widget popular_post_widget">
+                    <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Recent Post</h3>
+
+                        @foreach ($recent as $post)
                         <div class="media post_item">
-                            <img src="{{asset('img/post/post_1.png')}}" alt="post">
+                            <img src="/storage/cover_images/{{$post->cover_image}}" class=""
+                                style="width: 80px; height: 80px;" alt="">
                             <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>From life was you fish...</h3>
+                                <a href="/posts/{{$post->id}}">
+                                @if ($post->user->is_business)
+                                    <h3>{{$post->user->business_name}}  <i class="fas fa-check-circle ml-1" 
+                                        style="color: green;">
+                                        </i></h3>
+                                    
+                                @else
+                                    <h3>{{$post->user->name}}</h3>
+                                @endif
                                 </a>
-                                <p>January 12, 2019</p>
-                            </div>
-                        </div>
+                              <p>{{$post->created_at->format('m/d/Y')}}</p>
+                             </div>
+                          </div>    
+                        @endforeach
+                        
 
                     </aside>
-                    <aside class="single_sidebar_widget tag_cloud_widget">
-                        <h4 class="widget_title">Tag Clouds</h4>
-                        <ul class="list">
-                            <li>
-                                <a href="#">project</a>
-                            </li>
-                            <li>
-                                <a href="#">love</a>
-                            </li>
-                            <li>
-                                <a href="#">technology</a>
-                            </li>
-                            <li>
-                                <a href="#">travel</a>
-                            </li>
-                            <li>
-                                <a href="#">restaurant</a>
-                            </li>
-                            <li>
-                                <a href="#">life style</a>
-                            </li>
-                            <li>
-                                <a href="#">design</a>
-                            </li>
-                            <li>
-                                <a href="#">illustration</a>
-                            </li>
-                        </ul>
-                    </aside> --}}
+
                 </div>
             </div>
         </div>
@@ -243,7 +227,7 @@
                         <div class="footer-tittle">
                             <h4>Quick Links</h4>
                             <ul>
-                                <li><a href="#">About Tourist Checkpoint</a></li>
+                                <li><a href="/about">About Tourist Checkpoint</a></li>
 
                             </ul>
                         </div>
@@ -254,8 +238,8 @@
                         <div class="footer-tittle">
                             <h4>Contact</h4>
                             <ul>
-                                <li><a href="#">Tel: 04 255 6987</a></li>
-                                <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                <li><span style="font-weight: 10;">Tel: 04 255 6987</span></li>
+                                <li><span style="font-weight: 10;">Skype: TouristCheckpoint</sapn></li>
                                 <li><a href="#">contact@touristcheckpoint.com</a></li>
                             </ul>
                         </div>

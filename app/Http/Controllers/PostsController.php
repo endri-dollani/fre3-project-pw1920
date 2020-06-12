@@ -44,7 +44,8 @@ class PostsController extends Controller
             do shfaqen linqe te cilat pasi klikohen do shfaqin aq poste sa thote limiti
         */
         $posts = Post::orderby('created_at', 'desc')->paginate(2);
-        return view('posts.index')->with('posts', $posts);
+        $recent = Post::orderBy('created_at', 'desc')->take(3)->get();
+        return view('posts.index',compact('posts','recent'));
     }
 
   
@@ -58,6 +59,7 @@ class PostsController extends Controller
     {
         return view('posts.create');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -69,22 +71,23 @@ class PostsController extends Controller
     {
         if(auth()->user()->is_business == 0){
             $this->validate($request, [
-                'title' => 'required',
-                'body' => 'required',
+                'title' => 'required|min:8',
+                'body' => 'required|min:8',
                 'cover_image' => 'image|nullable|max:1999'
             ]);
         }
         else {
             $this->validate($request, [
-                'title' => 'required',
-                'body' => 'required',
+                'title' => 'required|min:8',
+                'body' => 'required|min:8',
                 'cover_image' => 'image|nullable|max:1999',
-                'checkin' => 'required',
-                'checkout' => 'required',
-                'adults' => 'required',
-                'children' => 'required',
-                'rooms' => 'required',
-                'price' => 'required',
+                'input' => 'required',
+                // 'checkin' => 'required|size:10',
+                // 'checkout' => 'required|size:10',
+                'adults' => 'required|min:1|numeric',
+                'children' => 'required|min:1|numeric',
+                'rooms' => 'required|min:1|numeric',
+                'price' => 'required|min:0|numeric',
 
             ]);
         }
@@ -114,8 +117,9 @@ class PostsController extends Controller
         $post->cover_image = $fileNameToStore;
 
         if(auth()->user()->is_business == 1){
-            $post->checkin_date = $request->input('checkin');
-            $post->checkout_date = $request->input('checkout');
+            $date = explode(" - ", $request->input('input'));
+            $post->checkin_date = $date[0];
+            $post->checkout_date = $date[1];
             $post->rooms = $request->input('rooms');
             $post->adults = $request->input('adults');
             $post->kids = $request->input('children');
@@ -135,7 +139,8 @@ class PostsController extends Controller
     public function show($id)
     {
         $post =  Post::find($id);
-        return view('posts.show')->with('post', $post);
+        $recent = Post::orderBy('id', 'desc')->take(3)->get();
+        return view('posts.show',compact('post','recent'));
     }
 
     /**
@@ -165,11 +170,29 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required'
-        ]);
+        if(auth()->user()->is_business == 0){
+            $this->validate($request, [
+                'title' => 'required|min:8',
+                'body' => 'required|min:8',
+                'cover_image' => 'image|nullable|max:1999'
+            ]);
+        }
+        else {
+            $this->validate($request, [
+                'title' => 'required|min:8',
+                'body' => 'required|min:8',
+                'cover_image' => 'image|nullable|max:1999',
+                'input' => 'required',
 
+                // 'checkin' => 'required|size:10',
+                // 'checkout' => 'required|size:10',
+                'adults' => 'required|min:0|numeric',
+                'children' => 'required|min:0|numeric',
+                'rooms' => 'required|min:1|numeric',
+                'price' => 'required|min:0|numeric',
+
+            ]);
+        }
          //Handle file upload: 
          if($request->hasFile('cover_image')){
             // Get filename with the extension
@@ -191,6 +214,15 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         if($request->hasFile('cover_image')){
             $post->cover_image = $fileNameToStore;
+        }
+        if(auth()->user()->is_business == 1){
+            $date = explode(" - ", $request->input('input'));
+            $post->checkin_date = $date[0];
+            $post->checkout_date = $date[1];
+            $post->rooms = $request->input('rooms');
+            $post->adults = $request->input('adults');
+            $post->kids = $request->input('children');
+            $post->price = $request->input('price');
         }
         $post->save();
 

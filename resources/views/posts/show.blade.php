@@ -22,6 +22,95 @@
 @endif
 @endif --}}
 
+<style type="text/css">
+    
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+</style>
+
 <div class="container pt-5">
     <a href="/posts" class="genric-btn info">Go Back</a>
 </div>
@@ -32,66 +121,71 @@
         <div class="row">
             <div class="col-lg-8 posts-list">
                 <div class="single-post">
-                    <div class="feature-img">
-                        <img src="/storage/cover_images/{{$post->cover_image}}" class=""
-                            style="width: 90%; height: 400px;" alt="">
+                    <div class="feature-img" style="text-align: left !important;">
+                        <img id="myImg" src="/storage/cover_images/{{$post->cover_image}}" class=""
+                        style="width: 100%; max-width:700px; max-height: 400px;" alt="">
                     </div>
-                    {{-- <div class="blog_item_img">
-                        <a href="#" class="blog_item_date">
-                            <h3>Reservate</h3>
-                        </a>
-                    </div> --}}
+                
 
                     <div class="blog_details">
                         <h2>{{$post->title}}</h2>
-                        {{-- <ul class="blog-info-link mt-3 mb-4">
-                            <li><span style="color: grey;"><i class="fa fa-user"></i> Travel, Lifestyle</span></li>
-                            <li><span style="color: grey;"><i class="fa fa-comments"></i> 03 Comments</span></li>
-                            <li><span style="color: grey;">Written on {{$post->created_at}} by
-                        {{$post->user->name}}</span></li>
-                        </ul> --}}
+                  
                         <p class="excert">
                             {{$post->body}}
                         </p>
                     </div>
-                    @if ($post->user->is_business == 1)
-                    <div class="col-xl-8 pt-4 col-lg-8 col-md-8">
-                        <!-- Reservation Details -->
-                        <div class="single-room mb-50 ">
-                            <div class="room-caption">
-                                <h3><a href="{{route('post.reservate',$post->id)}}"
-                                        style="color: #dca73a !important;">Reservate Now</a></h3>
-                                <div>
-                                    <span>Checkin date:</span>
-                                    <h5> {{$post->checkin_date}}</h5>
-                                    <span>Checkout date:</span>
-                                    <h5> {{$post->checkout_date}}</h5>
-                                </div>
-                                <span>Our {{$post->rooms}} room('s) can accommodate:</span>
-                                <div class="pt-2">
-                                    <h5>{{$post->adults}} Adult('s) and {{$post->kids}} Children('s) </h5>
-                                </div>
-                                <span>Price:</span>
-                                <div class="per-night">
-                                    <span><u>$</u>{{$post->price}} <span>/ per night</span></span>
-                                </div>
-
-                            </div>
+                   
+                    @if ($post->user->is_business == 1 && $post->price != null)
+                       
+                        <div>
+                            <hr>
+                            <h3>Reservation Details</h3>
                         </div>
-                    </div>
+                        <div>
+                            <span style="color: #0056b3;">Checkin date:</span>
+                            <h5> {{$post->checkin_date}}</h5>
+                            <span style="color: #0056b3;">Checkout date:</span> 
+                            <h5> {{$post->checkout_date}}</h5>
+                        </div>
+                        
+                        @if ($post->rooms == 1)
+                            <span style="color: #0056b3;">Our room  can accommodate:</span>
+                        @else
+                            <span style="color: #0056b3;">Our {{$post->rooms}} rooms can accommodate:</span>
+                            
+                        @endif
+                    
+                        <div class="pt-2">
+                            <h5>
+                                @if ($post->adults > 1)
+                                    <i class="far fa-hand-point-right"></i> {{$post->adults}} Adults
+                                    
+                                @else
+                                    <i class="far fa-hand-point-right"></i> {{$post->adults}} Adult
+                                    
+                                @endif
+                                
+                                <br>
+                                @if ($post->kids == 1)
+                                    <i class="far fa-hand-point-right"></i> {{$post->kids}} Child
+                                
+                                @else
+                                    <i class="far fa-hand-point-right"></i> {{$post->kids}} Children
+                                    
+                                @endif
+                            </h5>
+                        </div>
+                        
+                        <span style="color: #0056b3;">Price:</span>
+                        
+                        <div class="per-night">
+                            <h5><span style="font-weight: bold;"> {{$post->price}}</span> <i class="fas fa-dollar-sign"></i> / per night</h5>
+                        </div>
+
+                        <a href="/reservate/{{$post->id}}"  class="genric-btn info mt-4" style="color: white !important;">Checkout Now</a>
                     @endif
-
                 </div>
-                {{-- <div class="navigation-top">
-                    <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                            people like this</p>
-                        <div class="col-sm-4 text-center my-2 my-sm-0">
-                        </div>
-                     
-                    </div>
-                  
-    </div> --}}
+     
                 <div class="blog-author">
                     <div class="media align-items-center">
                         @if (!Auth::guest())
@@ -159,156 +253,23 @@
                         </div>
 
                         @endif
-                        {{-- <a href="/dashboard">
-            @if ($post->user->profile_pic == null)
-              
-                 <img src="/storage/profile_pics/noprofilepic.jpg" style="width: 50px; height: 50px; border-radius: 50%;" alt="">  
-            @else
-                    <img src="/storage/profile_pics/{{$post->user->profile_pic}}" style="width: 50px; height: 50px;
-                        border-radius: 50%;" alt="">
-                        @endif
-
-                        </a> --}}
+            
 
                     </div>
                     @if ($post->user->is_business == 1)
-                    <div class="blog-author pb-4 pt-4"">
-            <div class=" media align-items-center">
-
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Business Name</th>
-                                <th>Address</th>
-                                <th>City</th>
-                                <th>Phone Number</th>
-                            </tr>
-                            <tr>
-                                <td>{{$post->user->business_name}}</td>
-                                <td>{{$post->user->business_address}}</td>
-                                <td>{{$post->user->business_city}}</td>
-                                <td>{{$post->user->business_number}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                @endif
+                        <div class="blog-author pb-4 pt-4"">
+                            <h3>About {{$post->user->name}}'s business:</h3>
+                            <h5>Business name: {{$post->user->business_name}}</h5>                            
+                            <h5>Headquarters in: {{$post->user->business_city}}</h5>                            
+                            <h5>Address: {{$post->user->business_address}}</h5>                            
+                            <h5>Phone number: {{$post->user->business_number}}</h5>                            
+                        </div>
+                    @endif
             </div>
             <div class="comments-area">
-                {{-- <h4>05 Comments</h4> --}}
-                {{-- <div class="comment-list">
-            <div class="single-comment justify-content-between d-flex">
-                <div class="user justify-content-between d-flex">
-                    <div class="thumb">
-                        <img src="{{asset('img/comment/comment_1.png')}}" alt="">
-            </div>
-            <div class="desc">
-                <p class="comment">
-                    Multiply sea night grass fourth day sea lesser rule open subdue female fill
-                    which them
-                    Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                </p>
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <h5>
-                            <a href="#">Emilly Blunt</a>
-                        </h5>
-                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                    </div>
-                    <div class="reply-btn">
-                        <a href="#" class="btn-reply text-uppercase">reply</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
-    </div> --}}
-    {{-- <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="{{asset('img/comment/comment_2.png')}}" alt="">
-    </div>
-    <div class="desc">
-        <p class="comment">
-            Multiply sea night grass fourth day sea lesser rule open subdue female fill
-            which them
-            Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-        </p>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <h5>
-                    <a href="#">Emilly Blunt</a>
-                </h5>
-                <p class="date">December 4, 2017 at 3:12 pm </p>
-            </div>
-            <div class="reply-btn">
-                <a href="#" class="btn-reply text-uppercase">reply</a>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="comment-list">
-        <div class="single-comment justify-content-between d-flex">
-            <div class="user justify-content-between d-flex">
-                <div class="thumb">
-                    <img src="{{asset('img/comment/comment_3.png')}}" alt="">
-                </div>
-                <div class="desc">
-                    <p class="comment">
-                        Multiply sea night grass fourth day sea lesser rule open subdue female fill
-                        which them
-                        Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                    </p>
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <h5>
-                                <a href="#">Emilly Blunt</a>
-                            </h5>
-                            <p class="date">December 4, 2017 at 3:12 pm </p>
-                        </div>
-                        <div class="reply-btn">
-                            <a href="#" class="btn-reply text-uppercase">reply</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    </div>
-    {{-- <div class="comment-form">
-        <h4>Leave a Reply</h4>
-        <form class="form-contact comment_form" action="#" id="commentForm">
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group">
-                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                            placeholder="Write Comment"></textarea>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send
-                    Message</button>
-            </div>
-        </form>
-    </div> --}}
+ 
     </div>
     <div class="col-lg-4">
         <div class="blog_right_sidebar">
@@ -324,161 +285,32 @@
                         type="submit">Search</button>
                 </form>
             </aside>
-            {{-- <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">Category</h4>
-                        <ul class="list cat-list">
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Resaurant food</p>
-                                    <p>(37)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Travel news</p>
-                                    <p>(10)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Modern technology</p>
-                                    <p>(03)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Product</p>
-                                    <p>(11)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Inspiration</p>
-                                    <p>(21)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Health Care</p>
-                                    <p>(21)</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </aside> --}}
-            {{-- <aside class="single_sidebar_widget popular_post_widget">
+            <aside class="single_sidebar_widget popular_post_widget">
                 <h3 class="widget_title">Recent Post</h3>
+
+                @foreach ($recent as $post)
                 <div class="media post_item">
-                    <img src="{{asset('img/post/post_1.png')}}" alt="post">
-            <div class="media-body">
-                <a href="single-blog.html">
-                    <h3>From life was you fish...</h3>
-                </a>
-                <p>January 12, 2019</p>
-            </div>
-        </div> --}}
-        {{-- <div class="media post_item">
-                            <img src="{{asset('img/post/post_2.png')}}" alt="post">
-        <div class="media-body">
-            <a href="single-blog.html">
-                <h3>The Amazing Hubble</h3>
-            </a>
-            <p>02 Hours ago</p>
-        </div>
-    </div>
-    <div class="media post_item">
-        <img src="{{asset('img/post/post_3.png')}}" alt="post">
-        <div class="media-body">
-            <a href="single-blog.html">
-                <h3>Astronomy Or Astrology</h3>
-            </a>
-            <p>03 Hours ago</p>
-        </div>
-    </div>
-    <div class="media post_item">
-        <img src="{{asset('img/post/post_4.png')}}" alt="post">
-        <div class="media-body">
-            <a href="single-blog.html">
-                <h3>Asteroids telescope</h3>
-            </a>
-            <p>01 Hours ago</p>
-        </div>
-    </div> --}}
-    {{-- </aside>
-        <aside class="single_sidebar_widget tag_cloud_widget">
-            <h4 class="widget_title">Tag Clouds</h4>
-            <ul class="list">
-                <li>
-                    <a href="#">project</a>
-                </li>
-                <li>
-                    <a href="#">love</a>
-                </li>
-                <li>
-                    <a href="#">technology</a>
-                </li>
-                <li>
-                    <a href="#">travel</a>
-                </li>
-                <li>
-                    <a href="#">restaurant</a>
-                </li>
-                <li>
-                    <a href="#">life style</a>
-                </li>
-                <li>
-                    <a href="#">design</a>
-                </li>
-                <li>
-                    <a href="#">illustration</a>
-                </li>
-            </ul>
-        </aside> --}}
-    {{-- <aside class="single_sidebar_widget instagram_feeds">
-                        <h4 class="widget_title">Instagram Feeds</h4>
-                        <ul class="instagram_row flex-wrap">
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="{{asset('img/post/post_5.png')}}" alt="">
-    </a>
-    </li>
-    <li>
-        <a href="#">
-            <img class="img-fluid" src="{{asset('img/post/post_6.png')}}" alt="">
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <img class="img-fluid" src="{{asset('img/post/post_7.png')}}" alt="">
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <img class="img-fluid" src="{{asset('img/post/post_8.png')}}" alt="">
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <img class="img-fluid" src="{{asset('img/post/post_9.png')}}" alt="">
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <img class="img-fluid" src="{{asset('img/post/post_10.png')}}" alt="">
-        </a>
-    </li>
-    </ul>
-    </aside> --}}
-    {{-- <aside class="single_sidebar_widget newsletter_widget">
-                        <h4 class="widget_title">Newsletter</h4>
-                        <form action="#">
-                            <div class="form-group">
-                                <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                            </div>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                type="submit">Subscribe</button>
-                        </form>
-                    </aside> --}}
+                    <img src="/storage/cover_images/{{$post->cover_image}}" class=""
+                        style="width: 80px; height: 80px;" alt="">
+                    <div class="media-body">
+                        <a href="/posts/{{$post->id}}">
+                        @if ($post->user->is_business)
+                            <h3>{{$post->user->business_name}}  <i class="fas fa-check-circle ml-1" 
+                                style="color: green;">
+                                </i></h3>
+                            
+                        @else
+                            <h3>{{$post->user->name}}</h3>
+                        @endif
+                        </a>
+                      <p>{{$post->created_at->format('m/d/Y')}}</p>
+                     </div>
+                  </div>    
+                @endforeach
+                
+
+            </aside>
+
     </div>
     </div>
     </div>
@@ -520,10 +352,8 @@
                         <div class="footer-tittle">
                             <h4>Quick Links</h4>
                             <ul>
-                                <li><a href="#">About Tourist Checkpoint</a></li>
-                                {{-- <li><a href="#">Our Best Rooms</a></li>
-                                <li><a href="#">Our Photo Gellary</a></li>
-                                <li><a href="#">Pool Service</a></li> --}}
+                                <li><a href="/about">About Tourist Checkpoint</a></li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -533,8 +363,8 @@
                         <div class="footer-tittle">
                             <h4>Contact</h4>
                             <ul>
-                                <li><a href="#">Tel: 04 255 6987</a></li>
-                                <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                <li><span style="font-weight: 10;">Tel: 04 255 6987</span></li>
+                                <li><span style="font-weight: 10;">Skype: TouristCheckpoint</sapn></li>
                                 <li><a href="#">contact@touristcheckpoint.com</a></li>
                             </ul>
                         </div>
@@ -548,30 +378,41 @@
                                 <li><a href="http://www.fshn.edu.al/">Faculty of Natural Sciences,</a></li>
                                 <li><a href="http://www.fshn.edu.al/">Bulevardi Zogu I, Tiranë</a></li>
                             </ul>
-                            {{-- <!-- Form -->
-                             <div class="footer-form" >
-                                 <span style="color: white;">Newsletter</span>
-                                 <div id="mc_embed_signup">
-                                     <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                     method="get" class="subscribe_form relative mail_part">
-                                         <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                         class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                         onblur="this.placeholder = ' Email Address '">
-                                         <div class="form-icon">
-                                           <button type="submit" name="submit" id="newsletter-submit"
-                                           class="email_icon newsletter-submit button-contactForm"><img src="{{asset('img/logo/form-iocn.jpg')}}"
-                            alt=""></button>
-                        </div>
-                        <div class="mt-10 info"></div>
-                        </form>
-                    </div>
-                </div> --}}
+                         
             </div>
         </div>
     </div>
     </div>
     </div>
     </div>
+
+        <div id="myModal" class="modal">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01">
+          <div id="caption"></div>
+        </div>
+        <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
     <!-- Footer End-->
 </footer>
 

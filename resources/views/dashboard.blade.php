@@ -36,6 +36,7 @@
 
 
                 </div>
+                
                 @if ($user->is_business == 1)
                 
                 <div class="blog-author pb-4 pt-4"">
@@ -61,8 +62,13 @@
                 @endif
             </div>
             <div class="card ">
-                <div class="card-header">Dashboard </div>
-
+                @if (count($user->posts) == 0)
+                    <div class="card-header">You have {{count($user->posts)}} posts. Create and share something!</div>
+                @else
+                    <div class="card-header">You have {{count($user->posts)}} posts.</div>
+                    
+                @endif
+                
                 <div class="card-body">
 
 
@@ -72,100 +78,103 @@
                         <a href="/business/{{$user->id}}/edit" class="genric-btn danger">Edit Business Info</a>
                     @endif
                     <h3 class="pt-4">Your Blog Posts:</h3>
-                    {{-- @if (count($user->posts) > 0)
-                            <table class="table table-striped">
-                            <tr>
-                                <th>Title</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            @foreach ($user->posts as $post)
-                                <tr>
-                                    <td>{{$post->title}}</td>
-                    <td><a href="/posts/{{$post->id}}/edit" class="genric-btn info">Edit</a></td>
-                    <td>
-                        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class'
-                        => 'float-right'])!!}
-                        {{Form::hidden('_method', 'DELETE')}}
-                        {{Form::submit('Delete', ['class' => 'genric-btn danger'])}}
-                        {!!Form::close()!!}
-                    </td>
-                    </tr>
-                    @endforeach
-                    </table>
-                    @else
-                    <p>You have no posts.</p>
-                    @endif --}}
+         
 
                     <div class="container">
                         <div class="row">
 
 
 
-                            @if (count($user->posts) > 0)
-                            @foreach ($user->posts as $post)
-                            <div class="container pt-5  pl-10">
-                                <div class="blog_item_img">
-                                    <img src="/storage/cover_images/{{$post->cover_image}}" class=""
-                                        style="width: 90%; height: 400px;" alt="">
-                                    {{-- <a href="#" class="blog_item_date">
-                                                        <h3>Reservate</h3>
-                                                    </a> --}}
-                                </div>
+                            @if (count($posts) > 0)
+                                @foreach ($posts as $post)
+                                    <div class="container pt-5  pl-10">
+                                        <div class="blog_item_img" style="text-align: center !important;">
+                                            <img src="/storage/cover_images/{{$post->cover_image}}" class=""
+                                                style="width: 90% !important; height: 400px !important;" alt="">
+                                               
 
-                                <div class="blog_details">
-                                    <a href="/posts/{{$post->id}}">
-                                        <h2>{{$post->title}}</h2>
-                                    </a>
-                                    <p>{{$post->body}}</p>
-
-                                    @if ($post->user->is_business == 1)
-                                    <div class="col-xl-8 pt-4 col-lg-8 col-md-8">
-                                 <!-- Reservation Details -->
-                                 <div class="single-room mb-50 ">
-                                     <div class="room-caption">
-                                         @if (Auth::user()->id == $post->user_id)
-                                          <h3 class="contact-title" style="color: #dca73a !important;">Reservate Now</h3> 
-                                         @endif
-                                         <div>
-                                             <span>Checkin date:</span>
-                                             <h5> {{$post->checkin_date}}</h5>
-                                            <span>Checkout date:</span> 
-                                             <h5> {{$post->checkout_date}}</h5>
-                                         </div>
-                                         <span>Our {{$post->rooms}} room('s) can accommodate:</span>
-                                         <div class="pt-2">
-                                             <h5>{{$post->adults}} Adult('s) and {{$post->kids}} Children('s) </h5>
-                                         </div>
-                                         <span>Price:</span>
-                                         <div class="per-night">
-                                             <span><u>$</u>{{$post->price}} <span>/ per night</span></span>
-                                         </div>
+                                                
+                                            @if ($post->user->is_business == 1 && $post->price != null)
+                                                <div class="blog_item_date" style="text-align: left !important;">
+                                            
+                                                <!-- Button trigger modal -->
+                                                <a href="/posts/{{$post->id}}" class="btn btn-primary" style="color: white !important;">
+                                                    Book Now
+                                                </a>
+                                                </div>
+                                            
+                                    
+                                            @endif
+                                                    
+                                        </div>
                                         
-                                     </div>
-                                 </div>
-                             </div> 
-                             @endif
-                                    {{-- <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                        <li><small>Written on {{$post->created_at}} by {{$post->user->name}}</small></li>
-                                    </ul> --}}
+
+                                        <div class="blog_details"  >
+                                            <a href="/posts/{{$post->id}}">
+                                                <h2>{{$post->title}}</h2>
+                                            </a>
+                                            <p>{{$post->body}}</p>
+
+                                            <div class="blog-author">
+                                                <div class="media align-items-center">
+                                                    <ul class="blog-info-link">
+                                                           
+                                                        <li>
+                                                            <i class="fas fa-user"></i>
+                                                            <a  href="/dashboard" class="ml-1"
+                                                                style="color: #222222 !important;">
+                                                                
+                                                                {{$post->user->business_name}} 
+                                                                @if ($post->user->is_business == 1)
+                                                                    <i class="fas fa-check-circle ml-1" 
+                                                                    style="color: green;">
+                                                                    </i>
+                                                                @endif
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="far fa-clock"></i>
+                                                            
+                                                            <span class="ml-1">
+                                                                {{$post->created_at->format('m/d/Y')}}
+                                                            </span>
+                                                        </li>
+                                                      
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                         </div>
+                                         
+                                            <div>
+                                                <a href="/posts/{{$post->id}}/edit" class="genric-btn info mt-3">Edit</a>
+
+                                                {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST',
+                                                'class'
+                                                => 'float-right'])!!}
+
+                                                {{Form::hidden('_method', 'DELETE')}}
+
+                                                {{Form::submit('Delete', ['class' => 'genric-btn danger  mt-3'])}}
+
+                                                {!!Form::close()!!}
+                                            </div>
+                                      </div>
+                                    </div>
                                 </div>
-                                <a href="/posts/{{$post->id}}/edit" class="genric-btn info mt-3">Edit</a>
-                                {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST',
-                                'class'
-                                => 'float-right'])!!}
-                                {{Form::hidden('_method', 'DELETE')}}
-                                {{Form::submit('Delete', ['class' => 'genric-btn danger  mt-3'])}}
-                                {!!Form::close()!!}
-                            </div>
 
+                            
 
-                            @endforeach
+                                @endforeach
                             @else
                             <p>You have no posts.</p>
                             @endif
+
+                            <nav class="blog-pagination justify-content-center d-flex">
+
+                                {{$posts->links()}}
+        
+                            </nav>
 
                         </div>
                     </div>
@@ -211,7 +220,7 @@
                         <div class="footer-tittle">
                             <h4>Quick Links</h4>
                             <ul>
-                                <li><a href="#">About Tourist Checkpoint</a></li>
+                                <li><a href="/about">About Tourist Checkpoint</a></li>
 
                             </ul>
                         </div>
@@ -222,8 +231,8 @@
                         <div class="footer-tittle">
                             <h4>Contact</h4>
                             <ul>
-                                <li><a href="#">Tel: 04 255 6987</a></li>
-                                <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                <li><span style="font-weight: 10;">Tel: 04 255 6987</span></li>
+                                <li><span style="font-weight: 10;">Skype: TouristCheckpoint</sapn></li>
                                 <li><a href="#">contact@touristcheckpoint.com</a></li>
                             </ul>
                         </div>

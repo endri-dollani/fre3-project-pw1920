@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <input class="form-control" name="name" id="name" type="text"
                                  
-                                    placeholder="Enter your name" required>
+                                    value="{{$user->name}}" required>
                             </div>
                         </div>
 
@@ -29,7 +29,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <input class="form-control" name="email" id="email" type="text"
-                                    placeholder="Enter email address" required>
+                                    value="{{$user->email}}" required>
                             </div>
                         </div>
                         
@@ -73,7 +73,7 @@
                          </div>
                     </div>
 
-
+                    <input type="hidden" id="price" name="price" value="{{$post->price}}">
                     <div class="form-group mt-3 pt-5">
                         <button type="submit" class="button button-contactForm boxed-btn">Subscribe</button>
                     </div>
@@ -102,7 +102,57 @@
                     </div>
                 </div>
             </div> --}}
-           
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <!-- Single Room -->
+                <div class="single-room mb-50">
+                    <div class="room-caption">
+                        <h3>Reservation Details</h3>
+                        
+                        <div>
+                            <span style="color: #0056b3;">Checkin date:</span>
+                            <h5> {{$post->checkin_date}}</h5>
+                            <span style="color: #0056b3;">Checkout date:</span> 
+                            <h5> {{$post->checkout_date}}</h5>
+                        </div>
+                        
+                        @if ($post->rooms == 1)
+                            <span style="color: #0056b3;">Our room  can accommodate:</span>
+                        @else
+                            <span style="color: #0056b3;">Our {{$post->rooms}} rooms can accommodate:</span>
+                            
+                        @endif
+                    
+                        <div class="pt-2">
+                            <h5>
+                                @if ($post->adults > 1)
+                                    <i class="far fa-hand-point-right"></i> {{$post->adults}} Adults
+                                    
+                                @else
+                                    <i class="far fa-hand-point-right"></i> {{$post->adults}} Adult
+                                    
+                                @endif
+                                
+                                <br>
+                                @if ($post->kids == 1)
+                                    <i class="far fa-hand-point-right"></i> {{$post->kids}} Child
+                                
+                                @else
+                                    <i class="far fa-hand-point-right"></i> {{$post->kids}} Children
+                                    
+                                @endif
+                            </h5>
+                        </div>
+                        
+                        <span style="color: #0056b3;">Price:</span>
+                        
+                        <div class="per-night">
+                            <h5><span style="font-weight: bold;"> {{$post->price}}</span> <i class="fas fa-dollar-sign"></i> / per night</h5>
+                        </div>
+
+                  
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

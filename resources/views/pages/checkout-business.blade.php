@@ -11,7 +11,8 @@
                 <h4 class="contact-title pb-4">Business Account Details</h4>
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form " action="{{route('checkout-business.store',)}}" method="POST" id="payment-form">
+                <form class="form-contact contact_form " action="{{route('checkout-business.store',)}}" method="POST"
+                    id="payment-form">
                     {{csrf_field()}}
                     <div class="row">
                         <div class="col-12">
@@ -46,38 +47,14 @@
                                     placeholder="Enter city name" required>
                             </div>
                         </div>
-                        {{-- <div class="col-sm-6">
-                            <div class="col-12">
-                                <h4>Province</h4>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control valid" name="province" id="text" type="province"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter province name'"
-                                    placeholder="Enter province name">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="col-12">
-                                <h4>Postal Code</h4>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control valid" name="postal-code" id="postal-code" type="text"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter postal code'"
-                                    placeholder="Enter postal code">
-                            </div>
-                        </div> --}}
+
                         <div class="col-sm-6">
                             <div class="col-12">
                                 <h4>Phone</h4>
                             </div>
                             <div class="form-group">
-                                <input class="form-control valid"
-                                     name="phone-number" id="phone-number" 
-                                     type="text"
-                                     placeholder="Enter phone number" 
-                                     minlength="5"
-                                     maxlength="15" 
-                                     required>
+                                <input class="form-control valid" name="phone-number" id="phone-number" type="text"
+                                    placeholder="Enter phone number" minlength="5" maxlength="15" required>
                             </div>
                         </div>
 
@@ -86,17 +63,17 @@
                     <div class="col-12">
                         <h4 class="contact-title pt-4 pb-4">Payment Details</h4>
                         <div class="form-group StripeElement">
-                      
-                            
+
+
                             <div id="card-element">
                                 <!-- A Stripe Element will be inserted here. -->
                             </div>
 
                             <!-- Used to display form errors. -->
                             <div id="card-errors" role="alert"></div>
-                      
 
-                         </div>
+
+                        </div>
                     </div>
 
 
@@ -105,29 +82,7 @@
                     </div>
                 </form>
             </div>
-            {{-- <div class="col-lg-3 offset-lg-1">
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-home"></i></span>
-                    <div class="media-body">
-                        <h3>Faculty of Natural Sciences.</h3>
-                        <p>Bulevardi Zogu I, Tiranë</p>
-                    </div>
-                </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-                    <div class="media-body">
-                        <h3>Tel: 04 255 6987</h3>
-                        <p>Mon to Fri 9am to 6pm</p>
-                    </div>
-                </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-email"></i></span>
-                    <div class="media-body">
-                        <h3>contact@touristcheckpoint.com</h3>
-                        <p>Send us your query anytime!</p>
-                    </div>
-                </div>
-            </div> --}}
+
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <!-- Single Room -->
                 <div class="single-room mb-50">
@@ -179,10 +134,8 @@
                         <div class="footer-tittle">
                             <h4>Quick Links</h4>
                             <ul>
-                                <li><a href="#">About Tourist Checkpoint</a></li>
-                                {{-- <li><a href="#">Our Best Rooms</a></li>
-                                <li><a href="#">Our Photo Gellary</a></li>
-                                <li><a href="#">Pool Service</a></li> --}}
+                                <li><a href="/about">About Tourist Checkpoint</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -192,8 +145,9 @@
                         <div class="footer-tittle">
                             <h4>Contact</h4>
                             <ul>
-                                <li><a href="#">Tel: 04 255 6987</a></li>
-                                <li><a href="#">Skype: TouristCheckpoint</a></li>
+                                <li><span style="font-weight: 10;">Tel: 04 255 6987</span></li>
+                                <li><span style="font-weight: 10;">Skype: TouristCheckpoint</sapn>
+                                </li>
                                 <li><a href="#">contact@touristcheckpoint.com</a></li>
                             </ul>
                         </div>
@@ -207,29 +161,12 @@
                                 <li><a href="http://www.fshn.edu.al/">Faculty of Natural Sciences,</a></li>
                                 <li><a href="http://www.fshn.edu.al/">Bulevardi Zogu I, Tiranë</a></li>
                             </ul>
-                            {{-- <!-- Form -->
-                             <div class="footer-form" >
-                                 <span style="color: white;">Newsletter</span>
-                                 <div id="mc_embed_signup">
-                                     <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                     method="get" class="subscribe_form relative mail_part">
-                                         <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                         class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                         onblur="this.placeholder = ' Email Address '">
-                                         <div class="form-icon">
-                                           <button type="submit" name="submit" id="newsletter-submit"
-                                           class="email_icon newsletter-submit button-contactForm"><img src="{{asset('img/logo/form-iocn.jpg')}}"
-                            alt=""></button>
+
                         </div>
-                        <div class="mt-10 info"></div>
-                        </form>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
     </div>
     <!-- Footer End-->
 </footer>
@@ -268,7 +205,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 <script>
-            // Create a Stripe client.
+    // Create a Stripe client.
         var stripe = Stripe('{{config('services.stripe.key')}}');
 
         // Create an instance of Elements.
